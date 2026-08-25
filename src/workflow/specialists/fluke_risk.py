@@ -23,14 +23,23 @@ def evaluate_fluke_findings(
     factors: List[str] = []
     has_fish_history = False
 
-    if history and getattr(history, "raw_fish_consumption", False):
+    def _get_val(obj: Any, key: str, default: Any = False) -> Any:
+        if isinstance(obj, dict):
+            return obj.get(key, default)
+        return getattr(obj, key, default)
+
+    if history and _get_val(history, "raw_fish_consumption", False):
         has_fish_history = True
         risk_score += 0.55
         factors.append("ประวัติรับประทานปลาน้ำจืดดิบ/สุกๆ ดิบๆ (Raw fish consumption)")
 
-    if history and getattr(history, "fluke_infection_history", False):
+    if history and _get_val(history, "fluke_infection_history", False):
         risk_score += 0.30
         factors.append("เคยได้รับการวินิจฉัยหรือรักษาพยาธิใบไม้ตับ (Previous liver fluke treatment)")
+
+    if history and _get_val(history, "family_cancer_history", False):
+        risk_score += 0.15
+        factors.append("ประวัติมะเร็งท่อน้ำดีในครอบครัว (Family history of CCA)")
 
     # Ultrasound Image Periportal Analysis if image provided
     periportal_prominence = False
