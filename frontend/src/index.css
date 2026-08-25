@@ -1,0 +1,299 @@
+@import '@fontsource-variable/noto-sans-thai/index.css';
+@import 'tailwindcss';
+
+/* ------------------------------------------------------------------
+   SmartLiva — "Clean Medical" design tokens.
+
+   TWO SURFACES, ONE VOCABULARY. Light is the default. The ultrasound
+   viewport re-points the SAME token names inside [data-surface='dark'],
+   so a component written once with `bg-card text-ink border-line` is
+   correct on both and needs no variant.
+
+   Why the viewport stays dark: ultrasound is a dark-field image. A white
+   surround raises the eye's adaptation level and crushes shadow detail,
+   which is why US consoles and PACS keep a dark ground around the pixels.
+   ------------------------------------------------------------------ */
+@theme {
+  --font-sans: 'Noto Sans Thai Variable', 'Noto Sans Thai', ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-sans);
+
+  /* Surfaces */
+  --color-page: #f7fafc;
+  --color-card: #ffffff;
+  --color-raised: #fdfefe;
+  --color-sunken: #edf3f8;
+
+  /* Lines. `line` separates content; `line-strong` is for a border that is
+     the only thing indicating a control, and must clear 3:1 (WCAG 1.4.11). */
+  --color-line: #dce6ee;
+  --color-line-strong: #7e93a5;
+
+  /* Ink. `ink-muted` is deliberately darker than a typical secondary grey:
+     a clinical screen has to be readable at a glance, not squinted at. */
+  --color-ink: #22313f;
+  --color-ink-muted: #5c6e7f;
+  --color-on-primary: #ffffff;
+  --color-on-accent: #22313f;
+
+  /* Brand */
+  --color-primary: #059669;
+  --color-primary-hover: #047857;
+  --color-medical: #059669;
+
+  /* Accent — fills, progress, active bars, focus. NEVER carries text:
+     white on #18AFC4 is 2.64:1. Use accent-ink where a glyph must read. */
+  --color-accent: #18afc4;
+  --color-accent-ink: #0e7490;
+  --color-accent-tint: #eaf6fa;
+
+  /* Semantic: these four carry MEANING and must survive any repaint.
+     ai = machine-generated · verified = physician-confirmed
+     modified = physician-changed · alert = pathology */
+  --color-ai: #1f6fa8;
+  --color-ai-ink: #17578a;
+  --color-verified: #2e9d76;
+  --color-verified-ink: #1b7a5a;
+  --color-modified: #f59e0b;
+  --color-modified-ink: #9a6206;
+  --color-high: #ea7c1f;
+  --color-high-ink: #a3510a;
+  --color-alert: #d92b4b;
+  --color-alert-ink: #c2183c;
+  --color-alert-tint: #fdeef1;
+
+  /* Identity: which agent produced a region. Deliberately NOT re-pointed on
+     the dark surface — an agent's hue must be identical on the image, on its
+     card and in the layer toggle. */
+  --color-agent-fibrosis: #a78bfa;
+  --color-agent-steatosis: #38bdf8;
+  --color-agent-lesion: #dd389d;
+  --color-agent-fluke: #fbbf24;
+  --color-source-segmentation: #34d399;
+  --color-source-physician: #f8fafc;
+
+  --shadow-card: 0 1px 2px rgb(18 59 93 / 0.06), 0 8px 24px -16px rgb(18 59 93 / 0.18);
+  --shadow-float: 0 2px 6px rgb(2 8 20 / 0.34), 0 18px 44px -22px rgb(2 8 20 / 0.7);
+  --shadow-btn: 0 1px 2px rgb(18 59 93 / 0.16);
+
+  --animate-scan: scan 2.8s cubic-bezier(0.45, 0, 0.55, 1) infinite;
+  --animate-breathe: breathe 3s ease-in-out infinite;
+  --animate-rise: rise 0.45s cubic-bezier(0.22, 1, 0.36, 1) both;
+  --animate-sweep: sweep 1.4s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+
+  @keyframes scan {
+    0% { top: 0%; opacity: 0; }
+    8% { opacity: 1; }
+    92% { opacity: 1; }
+    100% { top: 100%; opacity: 0; }
+  }
+  @keyframes breathe {
+    0%, 100% { opacity: 0.45; }
+    50% { opacity: 1; }
+  }
+  @keyframes rise {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes sweep {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(200%); }
+  }
+}
+
+/* The one dark region. Same token names, dark values. */
+[data-surface='dark'] {
+  --color-page: #060b16;
+  --color-card: #0e1620;
+  --color-raised: #16202c;
+  --color-sunken: #0a121c;
+  --color-line: #24313f;
+  --color-line-strong: #6b7d8f;
+  --color-ink: #e6edf3;
+  --color-ink-muted: #93a4b5;
+  --color-on-primary: #ffffff;
+  --color-on-accent: #06101a;
+  --color-primary: #2778b0;
+  --color-primary-hover: #3a8cc4;
+  --color-medical: #4b9ad4;
+  --color-accent: #22d3ee;
+  --color-accent-ink: #67e8f9;
+  --color-accent-tint: #0c2a33;
+  --color-ai: #22d3ee;
+  --color-ai-ink: #67e8f9;
+  --color-verified: #10b981;
+  --color-verified-ink: #6ee7b7;
+  --color-modified: #f59e0b;
+  --color-modified-ink: #fcd34d;
+  --color-high: #fb923c;
+  --color-high-ink: #fdba74;
+  --color-alert: #f43f5e;
+  --color-alert-ink: #fda4af;
+  --color-alert-tint: #2a1119;
+}
+
+@layer base {
+  html, body, #root { height: 100%; }
+
+  body {
+    margin: 0;
+    background-color: var(--color-page);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    overscroll-behavior: none;
+  }
+
+  /* Thai stacks vowels and tone marks above the line, so every step needs
+     more leading than a Latin-only scale would. */
+  h1, h2 { line-height: 1.35; }
+  p, li { line-height: 1.7; }
+
+  /* One typeface across the whole system. Figures still line up column-wise,
+     via tabular figures rather than by switching to a mono family — mono
+     numerals read as "terminal", which is the opposite of the intended tone. */
+  .tnum {
+    font-variant-numeric: tabular-nums lining-nums;
+    letter-spacing: 0;
+  }
+
+  ::-webkit-scrollbar { width: 10px; height: 10px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+  ::-webkit-scrollbar-thumb {
+    background: color-mix(in oklab, var(--color-line-strong) 55%, transparent);
+    border-radius: 999px;
+    border: 3px solid transparent;
+    background-clip: content-box;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: color-mix(in oklab, var(--color-line-strong) 80%, transparent);
+    background-clip: content-box;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-accent-ink);
+    outline-offset: 2px;
+  }
+}
+
+@layer components {
+  /* Flat card. Replaces .glass — a gradient plus an inset white bevel is a
+     dark-UI idiom that means nothing on white. */
+  .panel {
+    background: var(--color-card);
+    border: 1px solid var(--color-line);
+    box-shadow: var(--shadow-card);
+  }
+
+  /* The one panel that genuinely floats over the image, so it keeps a blur.
+     Only ever used inside the dark scope. */
+  .panel-float {
+    background: color-mix(in oklab, var(--color-card) 82%, transparent);
+    backdrop-filter: blur(14px) saturate(140%);
+    -webkit-backdrop-filter: blur(14px) saturate(140%);
+    border: 1px solid var(--color-line);
+    box-shadow: var(--shadow-float);
+  }
+
+  /* Content dissolves at the scroll boundary instead of being sliced mid-line.
+     Only where the column actually scrolls -- below lg the page scrolls instead
+     and a fade there would dim real content at rest. */
+  @media (min-width: 64rem) {
+    .scroll-fade {
+      mask-image: linear-gradient(to bottom, #000 calc(100% - 22px), transparent 100%);
+    }
+  }
+
+  /* A bar that sits above the content casts upward, not downward. */
+  .bar-top {
+    background: var(--color-card);
+    border-top: 1px solid var(--color-line);
+    box-shadow: 0 -1px 2px rgb(18 59 93 / 0.05), 0 -10px 22px -18px rgb(18 59 93 / 0.28);
+  }
+
+  .slider {
+    -webkit-appearance: none;
+    appearance: none;
+    height: 4px;
+    border-radius: 999px;
+    background: var(--color-line-strong);
+    outline: none;
+  }
+  .slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 14px;
+    height: 14px;
+    border-radius: 999px;
+    background: var(--color-accent-ink);
+    border: 2px solid var(--color-card);
+    cursor: pointer;
+    transition: transform 0.12s ease;
+  }
+  .slider::-webkit-slider-thumb:hover { transform: scale(1.15); }
+  .slider::-moz-range-thumb {
+    width: 14px;
+    height: 14px;
+    border-radius: 999px;
+    background: var(--color-accent-ink);
+    border: 2px solid var(--color-card);
+    cursor: pointer;
+  }
+}
+
+/* ------------------------------------------------------------------
+   Print — only the diagnostic report reaches paper.
+   ------------------------------------------------------------------ */
+@media print {
+  @page { size: A4; margin: 14mm; }
+
+  /* Still needed: this is the modal scrim, which is not light. */
+  .print-root {
+    position: static !important;
+    inset: auto !important;
+    display: block !important;
+    background: #fff !important;
+    padding: 0 !important;
+    overflow: visible !important;
+  }
+
+  .no-print { display: none !important; }
+
+  .print-sheet {
+    position: static !important;
+    max-height: none !important;
+    max-width: none !important;
+    width: 100% !important;
+    overflow: visible !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    background: #fff !important;
+    color: #22313f !important;
+    backdrop-filter: none !important;
+  }
+
+  /* Paper needs a darker hairline than a screen: keep these off the screen
+     tokens deliberately. */
+  .print-sheet {
+    color: #22313f;
+    /* Keep the status colours and tinted rows on paper — they carry meaning
+       here, they are not decoration. */
+    print-color-adjust: exact;
+    -webkit-print-color-adjust: exact;
+  }
+  .print-sheet * {
+    border-color: #b6c2ce !important;
+    background-image: none !important;
+  }
+  .print-sheet .print-muted { color: #5c6e7f !important; }
+  .print-sheet .print-tint { background: #f1f5f9 !important; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}

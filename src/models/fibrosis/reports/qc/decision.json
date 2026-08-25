@@ -1,0 +1,6 @@
+{
+  "good_fraction": 0.87,
+  "primary_input_mode": "roi_masked_bbox",
+  "ablation_input_mode": "fan",
+  "rationale": "masks are reliable: use the liver ROI, ablate against fan"
+}

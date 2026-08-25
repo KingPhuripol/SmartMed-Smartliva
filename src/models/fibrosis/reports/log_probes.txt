@@ -1,0 +1,246 @@
+2026-08-10 14:49:50,939 [WARNING] Probing 5 of 15 folds (repeats < 1) to bound cost. A negative control only has to answer 'clearly above chance or not', but the probe AUROCs below are therefore noisier than the headline run's.
+2026-08-10 14:49:50,958 [INFO] Probe 'chrome': input mode 'chrome', 5 folds, backbone resnet18
+2026-08-10 14:50:11,779 [INFO] [r0f0] epoch 001/040 loss 0.8344 inner_auroc_ge_f2 0.5355 (21s) *
+2026-08-10 14:50:23,635 [INFO] [r0f0] epoch 002/040 loss 0.4103 inner_auroc_ge_f2 0.5742 (12s) *
+2026-08-10 14:50:35,524 [INFO] [r0f0] epoch 003/040 loss 0.3471 inner_auroc_ge_f2 0.5544 (12s)
+2026-08-10 14:50:47,550 [INFO] [r0f0] epoch 004/040 loss 0.3464 inner_auroc_ge_f2 0.5901 (12s) *
+2026-08-10 14:50:59,604 [INFO] [r0f0] epoch 005/040 loss 0.3287 inner_auroc_ge_f2 0.6102 (12s) *
+2026-08-10 14:56:08,826 [INFO] [r0f0] epoch 006/040 loss 0.3292 inner_auroc_ge_f2 0.6704 (309s) *
+2026-08-10 14:56:49,565 [INFO] [r0f0] epoch 007/040 loss 0.3227 inner_auroc_ge_f2 0.5471 (41s)
+2026-08-10 15:02:29,263 [INFO] [r0f0] epoch 008/040 loss 0.3131 inner_auroc_ge_f2 0.5934 (340s)
+2026-08-10 15:03:42,495 [INFO] [r0f0] epoch 009/040 loss 0.3153 inner_auroc_ge_f2 0.6555 (73s)
+2026-08-10 15:04:14,319 [INFO] [r0f0] epoch 010/040 loss 0.3112 inner_auroc_ge_f2 0.6337 (32s)
+2026-08-10 15:05:29,512 [INFO] [r0f0] epoch 011/040 loss 0.3091 inner_auroc_ge_f2 0.6023 (75s)
+2026-08-10 15:06:51,388 [INFO] [r0f0] epoch 012/040 loss 0.3044 inner_auroc_ge_f2 0.6241 (82s)
+2026-08-10 15:10:04,616 [INFO] [r0f0] epoch 013/040 loss 0.3011 inner_auroc_ge_f2 0.6221 (193s)
+2026-08-10 15:10:42,657 [INFO] [r0f0] epoch 014/040 loss 0.3018 inner_auroc_ge_f2 0.6225 (38s)
+2026-08-10 15:10:42,659 [INFO] [r0f0] early stop at epoch 14 (best 0.6704 @ 6)
+2026-08-10 15:19:30,203 [INFO] [r0f0] inner 0.6704 -> outer 0.5601  saved probe_chrome_r0f0.pt
+2026-08-10 15:20:10,935 [INFO] [r0f1] epoch 001/040 loss 0.7352 inner_auroc_ge_f2 0.5841 (20s) *
+2026-08-10 15:20:23,338 [INFO] [r0f1] epoch 002/040 loss 0.3838 inner_auroc_ge_f2 0.5894 (12s) *
+2026-08-10 15:20:36,394 [INFO] [r0f1] epoch 003/040 loss 0.3424 inner_auroc_ge_f2 0.5676 (13s)
+2026-08-10 15:20:48,530 [INFO] [r0f1] epoch 004/040 loss 0.3411 inner_auroc_ge_f2 0.5755 (12s)
+2026-08-10 15:21:00,284 [INFO] [r0f1] epoch 005/040 loss 0.3314 inner_auroc_ge_f2 0.5709 (12s)
+2026-08-10 15:21:12,239 [INFO] [r0f1] epoch 006/040 loss 0.3327 inner_auroc_ge_f2 0.5352 (12s)
+2026-08-10 15:21:24,276 [INFO] [r0f1] epoch 007/040 loss 0.3248 inner_auroc_ge_f2 0.5587 (12s)
+2026-08-10 15:21:36,222 [INFO] [r0f1] epoch 008/040 loss 0.3160 inner_auroc_ge_f2 0.5600 (12s)
+2026-08-10 15:21:47,968 [INFO] [r0f1] epoch 009/040 loss 0.3149 inner_auroc_ge_f2 0.5977 (12s) *
+2026-08-10 15:21:59,645 [INFO] [r0f1] epoch 010/040 loss 0.3101 inner_auroc_ge_f2 0.5980 (12s) *
+2026-08-10 15:22:11,390 [INFO] [r0f1] epoch 011/040 loss 0.3052 inner_auroc_ge_f2 0.5693 (12s)
+2026-08-10 15:22:23,839 [INFO] [r0f1] epoch 012/040 loss 0.3017 inner_auroc_ge_f2 0.5967 (12s)
+2026-08-10 15:22:36,916 [INFO] [r0f1] epoch 013/040 loss 0.3015 inner_auroc_ge_f2 0.6188 (13s) *
+2026-08-10 15:22:49,906 [INFO] [r0f1] epoch 014/040 loss 0.2999 inner_auroc_ge_f2 0.6175 (13s)
+2026-08-10 15:23:02,928 [INFO] [r0f1] epoch 015/040 loss 0.3033 inner_auroc_ge_f2 0.6155 (13s)
+2026-08-10 15:23:16,221 [INFO] [r0f1] epoch 016/040 loss 0.3002 inner_auroc_ge_f2 0.6145 (13s)
+2026-08-10 15:23:29,550 [INFO] [r0f1] epoch 017/040 loss 0.2988 inner_auroc_ge_f2 0.6175 (13s)
+2026-08-10 15:23:42,964 [INFO] [r0f1] epoch 018/040 loss 0.2999 inner_auroc_ge_f2 0.6076 (13s)
+2026-08-10 15:23:56,258 [INFO] [r0f1] epoch 019/040 loss 0.2933 inner_auroc_ge_f2 0.6010 (13s)
+2026-08-10 15:24:09,437 [INFO] [r0f1] epoch 020/040 loss 0.2958 inner_auroc_ge_f2 0.6139 (13s)
+2026-08-10 15:24:23,143 [INFO] [r0f1] epoch 021/040 loss 0.2948 inner_auroc_ge_f2 0.6198 (14s) *
+2026-08-10 15:24:36,921 [INFO] [r0f1] epoch 022/040 loss 0.2937 inner_auroc_ge_f2 0.6278 (14s) *
+2026-08-10 15:24:50,751 [INFO] [r0f1] epoch 023/040 loss 0.2900 inner_auroc_ge_f2 0.6301 (14s) *
+2026-08-10 15:25:03,839 [INFO] [r0f1] epoch 024/040 loss 0.2944 inner_auroc_ge_f2 0.6291 (13s)
+2026-08-10 15:25:16,914 [INFO] [r0f1] epoch 025/040 loss 0.2889 inner_auroc_ge_f2 0.6294 (13s)
+2026-08-10 15:25:30,140 [INFO] [r0f1] epoch 026/040 loss 0.2955 inner_auroc_ge_f2 0.6264 (13s)
+2026-08-10 15:25:44,885 [INFO] [r0f1] epoch 027/040 loss 0.2925 inner_auroc_ge_f2 0.6188 (15s)
+2026-08-10 15:26:00,012 [INFO] [r0f1] epoch 028/040 loss 0.2909 inner_auroc_ge_f2 0.6172 (15s)
+2026-08-10 15:26:19,420 [INFO] [r0f1] epoch 029/040 loss 0.2888 inner_auroc_ge_f2 0.6159 (19s)
+2026-08-10 15:26:34,275 [INFO] [r0f1] epoch 030/040 loss 0.2911 inner_auroc_ge_f2 0.6126 (15s)
+2026-08-10 15:26:48,399 [INFO] [r0f1] epoch 031/040 loss 0.2891 inner_auroc_ge_f2 0.6129 (14s)
+2026-08-10 15:26:48,400 [INFO] [r0f1] early stop at epoch 31 (best 0.6301 @ 23)
+2026-08-10 15:26:57,539 [INFO] [r0f1] inner 0.6301 -> outer 0.7417  saved probe_chrome_r0f1.pt
+2026-08-10 15:27:38,033 [INFO] [r0f2] epoch 001/040 loss 0.7790 inner_auroc_ge_f2 0.3924 (20s) *
+2026-08-10 15:27:50,027 [INFO] [r0f2] epoch 002/040 loss 0.3889 inner_auroc_ge_f2 0.4374 (12s) *
+2026-08-10 15:28:02,223 [INFO] [r0f2] epoch 003/040 loss 0.3450 inner_auroc_ge_f2 0.4096 (12s)
+2026-08-10 15:28:14,709 [INFO] [r0f2] epoch 004/040 loss 0.3345 inner_auroc_ge_f2 0.3729 (12s)
+2026-08-10 15:28:27,396 [INFO] [r0f2] epoch 005/040 loss 0.3278 inner_auroc_ge_f2 0.5021 (13s) *
+2026-08-10 15:28:40,344 [INFO] [r0f2] epoch 006/040 loss 0.3263 inner_auroc_ge_f2 0.5332 (13s) *
+2026-08-10 15:28:53,840 [INFO] [r0f2] epoch 007/040 loss 0.3184 inner_auroc_ge_f2 0.4721 (13s)
+2026-08-10 15:29:07,618 [INFO] [r0f2] epoch 008/040 loss 0.3185 inner_auroc_ge_f2 0.4440 (14s)
+2026-08-10 15:29:22,837 [INFO] [r0f2] epoch 009/040 loss 0.3163 inner_auroc_ge_f2 0.4846 (15s)
+2026-08-10 15:29:38,245 [INFO] [r0f2] epoch 010/040 loss 0.3159 inner_auroc_ge_f2 0.5322 (15s)
+2026-08-10 15:29:52,522 [INFO] [r0f2] epoch 011/040 loss 0.3108 inner_auroc_ge_f2 0.5762 (14s) *
+2026-08-10 15:30:06,797 [INFO] [r0f2] epoch 012/040 loss 0.3074 inner_auroc_ge_f2 0.5831 (14s) *
+2026-08-10 15:30:20,954 [INFO] [r0f2] epoch 013/040 loss 0.3034 inner_auroc_ge_f2 0.5557 (14s)
+2026-08-10 15:30:35,179 [INFO] [r0f2] epoch 014/040 loss 0.3032 inner_auroc_ge_f2 0.5666 (14s)
+2026-08-10 15:30:49,179 [INFO] [r0f2] epoch 015/040 loss 0.3026 inner_auroc_ge_f2 0.5911 (14s) *
+2026-08-10 15:31:03,391 [INFO] [r0f2] epoch 016/040 loss 0.3003 inner_auroc_ge_f2 0.5934 (14s) *
+2026-08-10 15:31:17,582 [INFO] [r0f2] epoch 017/040 loss 0.3002 inner_auroc_ge_f2 0.5983 (14s) *
+2026-08-10 15:31:31,481 [INFO] [r0f2] epoch 018/040 loss 0.3027 inner_auroc_ge_f2 0.5888 (14s)
+2026-08-10 15:31:46,986 [INFO] [r0f2] epoch 019/040 loss 0.2994 inner_auroc_ge_f2 0.5821 (16s)
+2026-08-10 15:32:02,118 [INFO] [r0f2] epoch 020/040 loss 0.2999 inner_auroc_ge_f2 0.5772 (15s)
+2026-08-10 15:32:16,397 [INFO] [r0f2] epoch 021/040 loss 0.2948 inner_auroc_ge_f2 0.5686 (14s)
+2026-08-10 15:32:30,923 [INFO] [r0f2] epoch 022/040 loss 0.2965 inner_auroc_ge_f2 0.5689 (15s)
+2026-08-10 15:32:45,284 [INFO] [r0f2] epoch 023/040 loss 0.2954 inner_auroc_ge_f2 0.5663 (14s)
+2026-08-10 15:32:59,689 [INFO] [r0f2] epoch 024/040 loss 0.2919 inner_auroc_ge_f2 0.5716 (14s)
+2026-08-10 15:33:14,187 [INFO] [r0f2] epoch 025/040 loss 0.2938 inner_auroc_ge_f2 0.5656 (14s)
+2026-08-10 15:33:14,187 [INFO] [r0f2] early stop at epoch 25 (best 0.5983 @ 17)
+2026-08-10 15:33:23,431 [INFO] [r0f2] inner 0.5983 -> outer 0.6198  saved probe_chrome_r0f2.pt
+2026-08-10 15:34:04,895 [INFO] [r0f3] epoch 001/040 loss 0.5853 inner_auroc_ge_f2 0.4074 (21s) *
+2026-08-10 15:34:16,979 [INFO] [r0f3] epoch 002/040 loss 0.3546 inner_auroc_ge_f2 0.4045 (12s)
+2026-08-10 15:34:29,830 [INFO] [r0f3] epoch 003/040 loss 0.3483 inner_auroc_ge_f2 0.2926 (13s)
+2026-08-10 15:34:42,855 [INFO] [r0f3] epoch 004/040 loss 0.3391 inner_auroc_ge_f2 0.2529 (13s)
+2026-08-10 15:34:56,886 [INFO] [r0f3] epoch 005/040 loss 0.3347 inner_auroc_ge_f2 0.3753 (14s)
+2026-08-10 15:35:11,021 [INFO] [r0f3] epoch 006/040 loss 0.3326 inner_auroc_ge_f2 0.4590 (14s) *
+2026-08-10 15:35:25,631 [INFO] [r0f3] epoch 007/040 loss 0.3276 inner_auroc_ge_f2 0.5644 (15s) *
+2026-08-10 15:35:40,306 [INFO] [r0f3] epoch 008/040 loss 0.3283 inner_auroc_ge_f2 0.5465 (15s)
+2026-08-10 15:35:55,912 [INFO] [r0f3] epoch 009/040 loss 0.3249 inner_auroc_ge_f2 0.4436 (16s)
+2026-08-10 15:36:10,558 [INFO] [r0f3] epoch 010/040 loss 0.3222 inner_auroc_ge_f2 0.4596 (15s)
+2026-08-10 15:36:25,931 [INFO] [r0f3] epoch 011/040 loss 0.3155 inner_auroc_ge_f2 0.5221 (15s)
+2026-08-10 15:36:40,781 [INFO] [r0f3] epoch 012/040 loss 0.3128 inner_auroc_ge_f2 0.4824 (15s)
+2026-08-10 15:36:55,244 [INFO] [r0f3] epoch 013/040 loss 0.3112 inner_auroc_ge_f2 0.4471 (14s)
+2026-08-10 15:37:10,443 [INFO] [r0f3] epoch 014/040 loss 0.3072 inner_auroc_ge_f2 0.4667 (15s)
+2026-08-10 15:37:24,079 [INFO] [r0f3] epoch 015/040 loss 0.3067 inner_auroc_ge_f2 0.4737 (14s)
+2026-08-10 15:37:24,079 [INFO] [r0f3] early stop at epoch 15 (best 0.5644 @ 7)
+2026-08-10 15:37:31,701 [INFO] [r0f3] inner 0.5644 -> outer 0.6715  saved probe_chrome_r0f3.pt
+2026-08-10 15:38:12,165 [INFO] [r0f4] epoch 001/040 loss 0.5955 inner_auroc_ge_f2 0.5737 (20s) *
+2026-08-10 15:38:25,146 [INFO] [r0f4] epoch 002/040 loss 0.3618 inner_auroc_ge_f2 0.4739 (13s)
+2026-08-10 15:38:37,612 [INFO] [r0f4] epoch 003/040 loss 0.3459 inner_auroc_ge_f2 0.5064 (12s)
+2026-08-10 15:38:50,420 [INFO] [r0f4] epoch 004/040 loss 0.3429 inner_auroc_ge_f2 0.5019 (13s)
+2026-08-10 15:39:03,058 [INFO] [r0f4] epoch 005/040 loss 0.3317 inner_auroc_ge_f2 0.4940 (13s)
+2026-08-10 15:39:16,307 [INFO] [r0f4] epoch 006/040 loss 0.3360 inner_auroc_ge_f2 0.5022 (13s)
+2026-08-10 15:39:29,837 [INFO] [r0f4] epoch 007/040 loss 0.3286 inner_auroc_ge_f2 0.5480 (14s)
+2026-08-10 15:39:43,579 [INFO] [r0f4] epoch 008/040 loss 0.3259 inner_auroc_ge_f2 0.5216 (14s)
+2026-08-10 15:39:57,502 [INFO] [r0f4] epoch 009/040 loss 0.3256 inner_auroc_ge_f2 0.5960 (14s) *
+2026-08-10 15:40:12,956 [INFO] [r0f4] epoch 010/040 loss 0.3172 inner_auroc_ge_f2 0.6202 (15s) *
+2026-08-10 15:40:28,750 [INFO] [r0f4] epoch 011/040 loss 0.3111 inner_auroc_ge_f2 0.6631 (16s) *
+2026-08-10 15:40:43,714 [INFO] [r0f4] epoch 012/040 loss 0.3114 inner_auroc_ge_f2 0.6713 (15s) *
+2026-08-10 15:40:58,483 [INFO] [r0f4] epoch 013/040 loss 0.3068 inner_auroc_ge_f2 0.6840 (15s) *
+2026-08-10 15:41:13,392 [INFO] [r0f4] epoch 014/040 loss 0.3062 inner_auroc_ge_f2 0.6815 (15s)
+2026-08-10 15:41:27,998 [INFO] [r0f4] epoch 015/040 loss 0.3071 inner_auroc_ge_f2 0.6424 (15s)
+2026-08-10 15:41:42,684 [INFO] [r0f4] epoch 016/040 loss 0.3069 inner_auroc_ge_f2 0.6456 (15s)
+2026-08-10 15:41:57,314 [INFO] [r0f4] epoch 017/040 loss 0.3055 inner_auroc_ge_f2 0.6548 (15s)
+2026-08-10 15:42:12,492 [INFO] [r0f4] epoch 018/040 loss 0.3026 inner_auroc_ge_f2 0.6675 (15s)
+2026-08-10 15:42:27,294 [INFO] [r0f4] epoch 019/040 loss 0.2963 inner_auroc_ge_f2 0.6694 (15s)
+2026-08-10 15:42:42,722 [INFO] [r0f4] epoch 020/040 loss 0.3019 inner_auroc_ge_f2 0.6519 (15s)
+2026-08-10 15:42:57,669 [INFO] [r0f4] epoch 021/040 loss 0.2961 inner_auroc_ge_f2 0.6427 (15s)
+2026-08-10 15:42:57,670 [INFO] [r0f4] early stop at epoch 21 (best 0.6840 @ 13)
+2026-08-10 15:43:06,613 [INFO] [r0f4] inner 0.6840 -> outer 0.5930  saved probe_chrome_r0f4.pt
+2026-08-10 15:43:27,161 [INFO] Probe 'chrome' predictions -> /Users/king_phuripol/AI-Engineer/01_Projects/Aong-Task/SmartMed/New-SmartLiva/models/fibrosis/reports/preds/probe_chrome.csv
+2026-08-10 15:43:27,187 [INFO] Probe 'mask': input mode 'mask_only', 5 folds, backbone resnet18
+2026-08-10 15:43:48,603 [INFO] [r0f0] epoch 001/040 loss 0.7255 inner_auroc_ge_f2 0.5630 (21s) *
+2026-08-10 15:44:00,720 [INFO] [r0f0] epoch 002/040 loss 0.3851 inner_auroc_ge_f2 0.5276 (12s)
+2026-08-10 15:44:13,758 [INFO] [r0f0] epoch 003/040 loss 0.3420 inner_auroc_ge_f2 0.5435 (13s)
+2026-08-10 15:44:26,450 [INFO] [r0f0] epoch 004/040 loss 0.3404 inner_auroc_ge_f2 0.5821 (13s) *
+2026-08-10 15:44:39,824 [INFO] [r0f0] epoch 005/040 loss 0.3302 inner_auroc_ge_f2 0.5686 (13s)
+2026-08-10 15:44:54,052 [INFO] [r0f0] epoch 006/040 loss 0.3322 inner_auroc_ge_f2 0.6066 (14s) *
+2026-08-10 15:45:08,018 [INFO] [r0f0] epoch 007/040 loss 0.3299 inner_auroc_ge_f2 0.6575 (14s) *
+2026-08-10 15:45:22,128 [INFO] [r0f0] epoch 008/040 loss 0.3139 inner_auroc_ge_f2 0.6889 (14s) *
+2026-08-10 15:45:36,298 [INFO] [r0f0] epoch 009/040 loss 0.3194 inner_auroc_ge_f2 0.6704 (14s)
+2026-08-10 15:45:50,540 [INFO] [r0f0] epoch 010/040 loss 0.3112 inner_auroc_ge_f2 0.6807 (14s)
+2026-08-10 15:46:04,467 [INFO] [r0f0] epoch 011/040 loss 0.3122 inner_auroc_ge_f2 0.6866 (14s)
+2026-08-10 15:46:18,347 [INFO] [r0f0] epoch 012/040 loss 0.3062 inner_auroc_ge_f2 0.6826 (14s)
+2026-08-10 15:46:32,232 [INFO] [r0f0] epoch 013/040 loss 0.3012 inner_auroc_ge_f2 0.6985 (14s) *
+2026-08-10 15:46:46,546 [INFO] [r0f0] epoch 014/040 loss 0.2953 inner_auroc_ge_f2 0.7174 (14s) *
+2026-08-10 15:47:02,010 [INFO] [r0f0] epoch 015/040 loss 0.2959 inner_auroc_ge_f2 0.7349 (15s) *
+2026-08-10 15:47:16,254 [INFO] [r0f0] epoch 016/040 loss 0.2957 inner_auroc_ge_f2 0.7134 (14s)
+2026-08-10 15:47:31,097 [INFO] [r0f0] epoch 017/040 loss 0.2931 inner_auroc_ge_f2 0.6988 (15s)
+2026-08-10 15:47:44,986 [INFO] [r0f0] epoch 018/040 loss 0.2916 inner_auroc_ge_f2 0.7117 (14s)
+2026-08-10 15:47:59,299 [INFO] [r0f0] epoch 019/040 loss 0.2883 inner_auroc_ge_f2 0.6876 (14s)
+2026-08-10 15:48:14,023 [INFO] [r0f0] epoch 020/040 loss 0.2901 inner_auroc_ge_f2 0.6843 (15s)
+2026-08-10 15:48:28,956 [INFO] [r0f0] epoch 021/040 loss 0.2897 inner_auroc_ge_f2 0.6810 (15s)
+2026-08-10 15:48:45,337 [INFO] [r0f0] epoch 022/040 loss 0.2852 inner_auroc_ge_f2 0.6863 (16s)
+2026-08-10 15:49:00,787 [INFO] [r0f0] epoch 023/040 loss 0.2854 inner_auroc_ge_f2 0.6869 (15s)
+2026-08-10 15:49:00,787 [INFO] [r0f0] early stop at epoch 23 (best 0.7349 @ 15)
+2026-08-10 15:49:10,022 [INFO] [r0f0] inner 0.7349 -> outer 0.5544  saved probe_mask_shape_r0f0.pt
+2026-08-10 15:49:50,732 [INFO] [r0f1] epoch 001/040 loss 0.6851 inner_auroc_ge_f2 0.4777 (20s) *
+2026-08-10 15:50:03,086 [INFO] [r0f1] epoch 002/040 loss 0.3835 inner_auroc_ge_f2 0.5134 (12s) *
+2026-08-10 15:50:15,984 [INFO] [r0f1] epoch 003/040 loss 0.3453 inner_auroc_ge_f2 0.5640 (13s) *
+2026-08-10 15:50:29,138 [INFO] [r0f1] epoch 004/040 loss 0.3376 inner_auroc_ge_f2 0.4919 (13s)
+2026-08-10 15:50:44,879 [INFO] [r0f1] epoch 005/040 loss 0.3315 inner_auroc_ge_f2 0.5660 (16s) *
+2026-08-10 15:59:26,122 [INFO] [r0f1] epoch 006/040 loss 0.3310 inner_auroc_ge_f2 0.6179 (521s) *
+2026-08-10 16:01:22,168 [INFO] [r0f1] epoch 007/040 loss 0.3167 inner_auroc_ge_f2 0.5980 (116s)
+2026-08-10 16:01:47,848 [INFO] [r0f1] epoch 008/040 loss 0.3207 inner_auroc_ge_f2 0.6050 (26s)
+2026-08-10 16:09:51,031 [INFO] [r0f1] epoch 009/040 loss 0.3157 inner_auroc_ge_f2 0.6350 (483s) *
+2026-08-10 16:16:06,141 [INFO] [r0f1] epoch 010/040 loss 0.3107 inner_auroc_ge_f2 0.6374 (375s) *
+2026-08-10 16:17:46,010 [INFO] [r0f1] epoch 011/040 loss 0.3113 inner_auroc_ge_f2 0.5980 (100s)
+2026-08-10 16:18:42,681 [INFO] [r0f1] epoch 012/040 loss 0.3141 inner_auroc_ge_f2 0.6159 (57s)
+2026-08-10 16:20:46,807 [INFO] [r0f1] epoch 013/040 loss 0.3046 inner_auroc_ge_f2 0.6377 (124s) *
+2026-08-10 16:21:23,446 [INFO] [r0f1] epoch 014/040 loss 0.2964 inner_auroc_ge_f2 0.6625 (37s) *
+2026-08-10 16:31:28,697 [INFO] [r0f1] epoch 015/040 loss 0.3014 inner_auroc_ge_f2 0.6529 (605s)
+2026-08-10 16:35:35,983 [INFO] [r0f1] epoch 016/040 loss 0.2964 inner_auroc_ge_f2 0.6516 (247s)
+2026-08-10 16:40:29,669 [INFO] [r0f1] epoch 017/040 loss 0.2925 inner_auroc_ge_f2 0.6592 (294s)
+2026-08-10 16:43:06,864 [INFO] [r0f1] epoch 018/040 loss 0.2922 inner_auroc_ge_f2 0.6579 (157s)
+2026-08-10 16:50:09,744 [INFO] [r0f1] epoch 019/040 loss 0.2894 inner_auroc_ge_f2 0.6426 (423s)
+2026-08-10 16:56:24,908 [INFO] [r0f1] epoch 020/040 loss 0.2896 inner_auroc_ge_f2 0.6288 (375s)
+2026-08-10 17:00:22,118 [INFO] [r0f1] epoch 021/040 loss 0.2898 inner_auroc_ge_f2 0.6192 (237s)
+2026-08-10 17:09:34,522 [INFO] [r0f1] epoch 022/040 loss 0.2852 inner_auroc_ge_f2 0.6198 (552s)
+2026-08-10 17:09:34,523 [INFO] [r0f1] early stop at epoch 22 (best 0.6625 @ 14)
+2026-08-10 17:27:38,596 [INFO] [r0f1] inner 0.6625 -> outer 0.7474  saved probe_mask_shape_r0f1.pt
+2026-08-10 18:10:06,058 [INFO] [r0f2] epoch 001/040 loss 0.7123 inner_auroc_ge_f2 0.4539 (111s) *
+2026-08-10 18:10:42,296 [INFO] [r0f2] epoch 002/040 loss 0.3795 inner_auroc_ge_f2 0.3904 (36s)
+2026-08-10 18:15:23,274 [INFO] [r0f2] epoch 003/040 loss 0.3468 inner_auroc_ge_f2 0.5210 (281s) *
+2026-08-10 18:15:38,810 [INFO] [r0f2] epoch 004/040 loss 0.3367 inner_auroc_ge_f2 0.5448 (16s) *
+2026-08-10 18:15:52,968 [INFO] [r0f2] epoch 005/040 loss 0.3354 inner_auroc_ge_f2 0.4588 (14s)
+2026-08-10 18:16:05,617 [INFO] [r0f2] epoch 006/040 loss 0.3275 inner_auroc_ge_f2 0.6294 (13s) *
+2026-08-10 18:16:18,248 [INFO] [r0f2] epoch 007/040 loss 0.3267 inner_auroc_ge_f2 0.6549 (13s) *
+2026-08-10 18:16:31,753 [INFO] [r0f2] epoch 008/040 loss 0.3170 inner_auroc_ge_f2 0.6483 (14s)
+2026-08-10 18:16:46,186 [INFO] [r0f2] epoch 009/040 loss 0.3143 inner_auroc_ge_f2 0.6347 (14s)
+2026-08-10 18:17:00,074 [INFO] [r0f2] epoch 010/040 loss 0.3115 inner_auroc_ge_f2 0.6248 (14s)
+2026-08-10 18:17:14,022 [INFO] [r0f2] epoch 011/040 loss 0.3130 inner_auroc_ge_f2 0.6102 (14s)
+2026-08-10 18:17:28,421 [INFO] [r0f2] epoch 012/040 loss 0.3117 inner_auroc_ge_f2 0.6284 (14s)
+2026-08-10 18:17:44,524 [INFO] [r0f2] epoch 013/040 loss 0.2999 inner_auroc_ge_f2 0.6740 (16s) *
+2026-08-10 18:18:02,856 [INFO] [r0f2] epoch 014/040 loss 0.3009 inner_auroc_ge_f2 0.6863 (18s) *
+2026-08-10 18:18:23,630 [INFO] [r0f2] epoch 015/040 loss 0.3030 inner_auroc_ge_f2 0.6879 (21s) *
+2026-08-10 18:18:43,047 [INFO] [r0f2] epoch 016/040 loss 0.2979 inner_auroc_ge_f2 0.6787 (19s)
+2026-08-10 18:19:05,488 [INFO] [r0f2] epoch 017/040 loss 0.2961 inner_auroc_ge_f2 0.6532 (22s)
+2026-08-10 18:19:24,611 [INFO] [r0f2] epoch 018/040 loss 0.2930 inner_auroc_ge_f2 0.6549 (19s)
+2026-08-10 18:19:46,486 [INFO] [r0f2] epoch 019/040 loss 0.2876 inner_auroc_ge_f2 0.6522 (22s)
+2026-08-10 18:20:09,521 [INFO] [r0f2] epoch 020/040 loss 0.2898 inner_auroc_ge_f2 0.6512 (23s)
+2026-08-10 18:20:30,405 [INFO] [r0f2] epoch 021/040 loss 0.2844 inner_auroc_ge_f2 0.6545 (21s)
+2026-08-10 18:20:49,657 [INFO] [r0f2] epoch 022/040 loss 0.2940 inner_auroc_ge_f2 0.6536 (19s)
+2026-08-10 18:21:07,811 [INFO] [r0f2] epoch 023/040 loss 0.2826 inner_auroc_ge_f2 0.6473 (18s)
+2026-08-10 18:21:07,812 [INFO] [r0f2] early stop at epoch 23 (best 0.6879 @ 15)
+2026-08-10 18:21:17,543 [INFO] [r0f2] inner 0.6879 -> outer 0.6159  saved probe_mask_shape_r0f2.pt
+2026-08-10 18:22:02,265 [INFO] [r0f3] epoch 001/040 loss 0.8137 inner_auroc_ge_f2 0.5417 (24s) *
+2026-08-10 18:22:22,501 [INFO] [r0f3] epoch 002/040 loss 0.4175 inner_auroc_ge_f2 0.5471 (20s) *
+2026-08-10 18:22:41,655 [INFO] [r0f3] epoch 003/040 loss 0.3497 inner_auroc_ge_f2 0.5295 (19s)
+2026-08-10 18:23:02,207 [INFO] [r0f3] epoch 004/040 loss 0.3487 inner_auroc_ge_f2 0.5423 (21s)
+2026-08-10 18:23:25,831 [INFO] [r0f3] epoch 005/040 loss 0.3408 inner_auroc_ge_f2 0.6365 (24s) *
+2026-08-10 18:23:48,611 [INFO] [r0f3] epoch 006/040 loss 0.3367 inner_auroc_ge_f2 0.5814 (23s)
+2026-08-10 18:24:07,880 [INFO] [r0f3] epoch 007/040 loss 0.3332 inner_auroc_ge_f2 0.6151 (19s)
+2026-08-10 18:24:28,787 [INFO] [r0f3] epoch 008/040 loss 0.3300 inner_auroc_ge_f2 0.6135 (21s)
+2026-08-10 18:24:57,333 [INFO] [r0f3] epoch 009/040 loss 0.3225 inner_auroc_ge_f2 0.6429 (29s) *
+2026-08-10 18:25:28,592 [INFO] [r0f3] epoch 010/040 loss 0.3163 inner_auroc_ge_f2 0.5788 (31s)
+2026-08-10 18:25:57,388 [INFO] [r0f3] epoch 011/040 loss 0.3143 inner_auroc_ge_f2 0.6109 (29s)
+2026-08-10 18:26:26,835 [INFO] [r0f3] epoch 012/040 loss 0.3131 inner_auroc_ge_f2 0.5974 (29s)
+2026-08-10 18:26:51,180 [INFO] [r0f3] epoch 013/040 loss 0.3064 inner_auroc_ge_f2 0.5683 (24s)
+2026-08-10 18:27:14,707 [INFO] [r0f3] epoch 014/040 loss 0.3083 inner_auroc_ge_f2 0.5724 (24s)
+2026-08-10 18:27:43,347 [INFO] [r0f3] epoch 015/040 loss 0.3043 inner_auroc_ge_f2 0.5849 (29s)
+2026-08-10 18:28:10,816 [INFO] [r0f3] epoch 016/040 loss 0.3028 inner_auroc_ge_f2 0.6160 (27s)
+2026-08-10 18:28:41,898 [INFO] [r0f3] epoch 017/040 loss 0.2977 inner_auroc_ge_f2 0.6397 (31s)
+2026-08-10 18:28:41,899 [INFO] [r0f3] early stop at epoch 17 (best 0.6429 @ 9)
+2026-08-10 18:29:03,691 [INFO] [r0f3] inner 0.6429 -> outer 0.6561  saved probe_mask_shape_r0f3.pt
+2026-08-10 18:30:13,320 [INFO] [r0f4] epoch 001/040 loss 1.0123 inner_auroc_ge_f2 0.5633 (49s) *
+2026-08-10 18:30:50,461 [INFO] [r0f4] epoch 002/040 loss 0.5084 inner_auroc_ge_f2 0.5429 (37s)
+2026-08-10 18:31:26,405 [INFO] [r0f4] epoch 003/040 loss 0.3572 inner_auroc_ge_f2 0.4698 (36s)
+2026-08-10 18:32:00,353 [INFO] [r0f4] epoch 004/040 loss 0.3501 inner_auroc_ge_f2 0.4323 (34s)
+2026-08-10 18:32:33,385 [INFO] [r0f4] epoch 005/040 loss 0.3357 inner_auroc_ge_f2 0.5188 (33s)
+2026-08-10 18:33:02,518 [INFO] [r0f4] epoch 006/040 loss 0.3321 inner_auroc_ge_f2 0.5690 (29s) *
+2026-08-10 18:33:29,054 [INFO] [r0f4] epoch 007/040 loss 0.3237 inner_auroc_ge_f2 0.4940 (27s)
+2026-08-10 18:33:56,836 [INFO] [r0f4] epoch 008/040 loss 0.3240 inner_auroc_ge_f2 0.5528 (28s)
+2026-08-10 18:34:23,289 [INFO] [r0f4] epoch 009/040 loss 0.3200 inner_auroc_ge_f2 0.5302 (26s)
+2026-08-10 18:34:50,126 [INFO] [r0f4] epoch 010/040 loss 0.3153 inner_auroc_ge_f2 0.5671 (27s)
+2026-08-10 18:35:18,462 [INFO] [r0f4] epoch 011/040 loss 0.3120 inner_auroc_ge_f2 0.5664 (28s)
+2026-08-10 18:35:48,167 [INFO] [r0f4] epoch 012/040 loss 0.3105 inner_auroc_ge_f2 0.5629 (30s)
+2026-08-10 18:36:18,156 [INFO] [r0f4] epoch 013/040 loss 0.3085 inner_auroc_ge_f2 0.5512 (30s)
+2026-08-10 18:36:49,430 [INFO] [r0f4] epoch 014/040 loss 0.3040 inner_auroc_ge_f2 0.5620 (31s)
+2026-08-10 18:36:49,431 [INFO] [r0f4] early stop at epoch 14 (best 0.5690 @ 6)
+2026-08-10 18:37:07,263 [INFO] [r0f4] inner 0.5690 -> outer 0.6577  saved probe_mask_shape_r0f4.pt
+2026-08-10 18:37:28,244 [INFO] Probe 'mask' predictions -> /Users/king_phuripol/AI-Engineer/01_Projects/Aong-Task/SmartMed/New-SmartLiva/models/fibrosis/reports/preds/probe_mask_shape.csv
+2026-08-10 18:37:28,244 [INFO] Probe 'metadata': reusing /Users/king_phuripol/AI-Engineer/01_Projects/Aong-Task/SmartMed/New-SmartLiva/models/fibrosis/reports/preds/B3_metadata.csv
+
+=== Negative controls ===
+run                                   ge_f2               ge_f3                  f4
+probe_chrome              0.637 [0.53,0.64]   0.689 [0.54,0.69]   0.706 [0.54,0.71]
+probe_mask_shape          0.646 [0.57,0.69]   0.650 [0.56,0.72]   0.675 [0.53,0.76]
+B3_metadata               0.593 [0.53,0.64]   0.573 [0.49,0.64]   0.606 [0.49,0.68]
+resnet18_roi              0.718 [0.62,0.73]   0.746 [0.63,0.77]   0.765 [0.66,0.83]
+
+Verdict on >=F2 (the endpoint the project is judged on):
+  strongest probe : probe_mask_shape at 0.646
+  headline model  : resnet18_roi at 0.718
+  margin          : +0.072   (headline 95% CI width 0.116)
+  FAIL -- the margin is inside the confidence interval. The score is not yet
+         distinguishable from what a shortcut alone achieves; do not present
+         it as a fibrosis result until the margin grows.

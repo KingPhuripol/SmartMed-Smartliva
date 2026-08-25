@@ -1,0 +1,192 @@
+2026-08-10 10:48:40,410 [INFO] Run 'resnet18_roi' on device mps (backbone resnet18, mode roi_masked_bbox)
+2026-08-10 10:48:40,446 [INFO] Training 15 fold(s) over 730 exams
+2026-08-10 10:48:59,856 [INFO] [r0f0] epoch 001/040 loss 0.6489 inner_auroc_ge_f2 0.3775 (19s) *
+2026-08-10 10:49:11,458 [INFO] [r0f0] epoch 002/040 loss 0.3772 inner_auroc_ge_f2 0.5236 (12s) *
+2026-08-10 10:49:23,181 [INFO] [r0f0] epoch 003/040 loss 0.3346 inner_auroc_ge_f2 0.5607 (12s) *
+2026-08-10 10:49:34,895 [INFO] [r0f0] epoch 004/040 loss 0.3322 inner_auroc_ge_f2 0.5772 (12s) *
+2026-08-10 10:49:46,820 [INFO] [r0f0] epoch 005/040 loss 0.3259 inner_auroc_ge_f2 0.5815 (12s) *
+2026-08-10 10:49:59,389 [INFO] [r0f0] epoch 006/040 loss 0.3115 inner_auroc_ge_f2 0.6321 (13s) *
+2026-08-10 10:50:12,770 [INFO] [r0f0] epoch 007/040 loss 0.3052 inner_auroc_ge_f2 0.6344 (13s) *
+2026-08-10 10:50:26,824 [INFO] [r0f0] epoch 008/040 loss 0.3039 inner_auroc_ge_f2 0.6255 (14s)
+2026-08-10 10:50:41,502 [INFO] [r0f0] epoch 009/040 loss 0.2954 inner_auroc_ge_f2 0.6357 (15s) *
+2026-08-10 10:50:56,590 [INFO] [r0f0] epoch 010/040 loss 0.2857 inner_auroc_ge_f2 0.6192 (15s)
+2026-08-10 10:51:11,851 [INFO] [r0f0] epoch 011/040 loss 0.2859 inner_auroc_ge_f2 0.6420 (15s) *
+2026-08-10 10:51:27,262 [INFO] [r0f0] epoch 012/040 loss 0.2763 inner_auroc_ge_f2 0.6473 (15s) *
+2026-08-10 10:51:42,326 [INFO] [r0f0] epoch 013/040 loss 0.2717 inner_auroc_ge_f2 0.6545 (15s) *
+2026-08-10 10:51:57,270 [INFO] [r0f0] epoch 014/040 loss 0.2689 inner_auroc_ge_f2 0.6595 (15s) *
+2026-08-10 10:52:12,087 [INFO] [r0f0] epoch 015/040 loss 0.2600 inner_auroc_ge_f2 0.6754 (15s) *
+2026-08-10 10:52:27,443 [INFO] [r0f0] epoch 016/040 loss 0.2572 inner_auroc_ge_f2 0.6803 (15s) *
+2026-08-10 10:52:42,194 [INFO] [r0f0] epoch 017/040 loss 0.2541 inner_auroc_ge_f2 0.6820 (15s) *
+2026-08-10 10:52:57,784 [INFO] [r0f0] epoch 018/040 loss 0.2474 inner_auroc_ge_f2 0.6783 (16s)
+2026-08-10 10:53:13,521 [INFO] [r0f0] epoch 019/040 loss 0.2460 inner_auroc_ge_f2 0.6721 (16s)
+2026-08-10 10:53:29,273 [INFO] [r0f0] epoch 020/040 loss 0.2413 inner_auroc_ge_f2 0.6721 (16s)
+2026-08-10 10:53:45,039 [INFO] [r0f0] epoch 021/040 loss 0.2326 inner_auroc_ge_f2 0.6774 (16s)
+2026-08-10 10:54:00,243 [INFO] [r0f0] epoch 022/040 loss 0.2211 inner_auroc_ge_f2 0.6863 (15s) *
+2026-08-10 10:54:15,479 [INFO] [r0f0] epoch 023/040 loss 0.2225 inner_auroc_ge_f2 0.6843 (15s)
+2026-08-10 10:54:30,943 [INFO] [r0f0] epoch 024/040 loss 0.2234 inner_auroc_ge_f2 0.6793 (15s)
+2026-08-10 10:54:46,028 [INFO] [r0f0] epoch 025/040 loss 0.2167 inner_auroc_ge_f2 0.6846 (15s)
+2026-08-10 10:55:01,064 [INFO] [r0f0] epoch 026/040 loss 0.2135 inner_auroc_ge_f2 0.6850 (15s)
+2026-08-10 10:55:16,162 [INFO] [r0f0] epoch 027/040 loss 0.2170 inner_auroc_ge_f2 0.6826 (15s)
+2026-08-10 10:55:31,558 [INFO] [r0f0] epoch 028/040 loss 0.2040 inner_auroc_ge_f2 0.6856 (15s)
+2026-08-10 10:55:46,889 [INFO] [r0f0] epoch 029/040 loss 0.2062 inner_auroc_ge_f2 0.6873 (15s) *
+2026-08-10 10:56:02,121 [INFO] [r0f0] epoch 030/040 loss 0.2065 inner_auroc_ge_f2 0.6860 (15s)
+2026-08-10 10:56:18,618 [INFO] [r0f0] epoch 031/040 loss 0.2031 inner_auroc_ge_f2 0.6836 (16s)
+2026-08-10 10:56:33,552 [INFO] [r0f0] epoch 032/040 loss 0.2014 inner_auroc_ge_f2 0.6810 (15s)
+2026-08-10 10:56:48,942 [INFO] [r0f0] epoch 033/040 loss 0.2010 inner_auroc_ge_f2 0.6780 (15s)
+2026-08-10 10:57:04,294 [INFO] [r0f0] epoch 034/040 loss 0.2037 inner_auroc_ge_f2 0.6774 (15s)
+2026-08-10 10:57:20,384 [INFO] [r0f0] epoch 035/040 loss 0.1969 inner_auroc_ge_f2 0.6754 (16s)
+2026-08-10 10:57:36,957 [INFO] [r0f0] epoch 036/040 loss 0.1893 inner_auroc_ge_f2 0.6744 (17s)
+2026-08-10 10:57:54,253 [INFO] [r0f0] epoch 037/040 loss 0.1954 inner_auroc_ge_f2 0.6747 (17s)
+2026-08-10 10:57:54,253 [INFO] [r0f0] early stop at epoch 37 (best 0.6873 @ 29)
+2026-08-10 10:58:10,938 [INFO] [r0f0] inner 0.6873 -> outer 0.7457  saved resnet18_roi_r0f0.pt
+2026-08-10 10:59:02,091 [INFO] [r0f1] epoch 001/040 loss 0.5887 inner_auroc_ge_f2 0.4420 (30s) *
+2026-08-10 10:59:19,535 [INFO] [r0f1] epoch 002/040 loss 0.3664 inner_auroc_ge_f2 0.4866 (17s) *
+2026-08-10 10:59:35,822 [INFO] [r0f1] epoch 003/040 loss 0.3359 inner_auroc_ge_f2 0.5484 (16s) *
+2026-08-10 10:59:53,039 [INFO] [r0f1] epoch 004/040 loss 0.3290 inner_auroc_ge_f2 0.6040 (17s) *
+2026-08-10 11:00:10,068 [INFO] [r0f1] epoch 005/040 loss 0.3225 inner_auroc_ge_f2 0.5831 (17s)
+2026-08-10 11:00:27,111 [INFO] [r0f1] epoch 006/040 loss 0.3135 inner_auroc_ge_f2 0.5821 (17s)
+2026-08-10 11:00:44,848 [INFO] [r0f1] epoch 007/040 loss 0.3077 inner_auroc_ge_f2 0.5749 (18s)
+2026-08-10 11:01:04,934 [INFO] [r0f1] epoch 008/040 loss 0.2998 inner_auroc_ge_f2 0.5759 (20s)
+2026-08-10 11:01:23,860 [INFO] [r0f1] epoch 009/040 loss 0.2950 inner_auroc_ge_f2 0.5970 (19s)
+2026-08-10 11:01:42,812 [INFO] [r0f1] epoch 010/040 loss 0.2889 inner_auroc_ge_f2 0.6159 (19s) *
+2026-08-10 11:02:01,637 [INFO] [r0f1] epoch 011/040 loss 0.2798 inner_auroc_ge_f2 0.6298 (19s) *
+2026-08-10 11:02:22,029 [INFO] [r0f1] epoch 012/040 loss 0.2718 inner_auroc_ge_f2 0.6218 (20s)
+2026-08-10 11:02:40,903 [INFO] [r0f1] epoch 013/040 loss 0.2699 inner_auroc_ge_f2 0.6410 (19s) *
+2026-08-10 11:03:00,045 [INFO] [r0f1] epoch 014/040 loss 0.2626 inner_auroc_ge_f2 0.6493 (19s) *
+2026-08-10 11:03:23,554 [INFO] [r0f1] epoch 015/040 loss 0.2604 inner_auroc_ge_f2 0.6582 (24s) *
+2026-08-10 11:03:43,963 [INFO] [r0f1] epoch 016/040 loss 0.2531 inner_auroc_ge_f2 0.6579 (20s)
+2026-08-10 11:04:02,088 [INFO] [r0f1] epoch 017/040 loss 0.2488 inner_auroc_ge_f2 0.6740 (18s) *
+2026-08-10 11:04:19,034 [INFO] [r0f1] epoch 018/040 loss 0.2419 inner_auroc_ge_f2 0.6876 (17s) *
+2026-08-10 11:04:35,535 [INFO] [r0f1] epoch 019/040 loss 0.2355 inner_auroc_ge_f2 0.6926 (17s) *
+2026-08-10 11:04:52,041 [INFO] [r0f1] epoch 020/040 loss 0.2404 inner_auroc_ge_f2 0.6866 (17s)
+2026-08-10 11:05:08,563 [INFO] [r0f1] epoch 021/040 loss 0.2298 inner_auroc_ge_f2 0.6889 (17s)
+2026-08-10 11:05:26,335 [INFO] [r0f1] epoch 022/040 loss 0.2266 inner_auroc_ge_f2 0.6926 (18s)
+2026-08-10 11:05:44,171 [INFO] [r0f1] epoch 023/040 loss 0.2158 inner_auroc_ge_f2 0.6922 (18s)
+2026-08-10 11:06:01,082 [INFO] [r0f1] epoch 024/040 loss 0.2236 inner_auroc_ge_f2 0.6906 (17s)
+2026-08-10 11:06:17,672 [INFO] [r0f1] epoch 025/040 loss 0.2162 inner_auroc_ge_f2 0.6922 (17s)
+2026-08-10 11:06:37,338 [INFO] [r0f1] epoch 026/040 loss 0.2122 inner_auroc_ge_f2 0.6988 (20s) *
+2026-08-10 11:06:56,945 [INFO] [r0f1] epoch 027/040 loss 0.2137 inner_auroc_ge_f2 0.7021 (20s) *
+2026-08-10 11:07:15,222 [INFO] [r0f1] epoch 028/040 loss 0.2096 inner_auroc_ge_f2 0.7041 (18s) *
+2026-08-10 11:07:32,298 [INFO] [r0f1] epoch 029/040 loss 0.2012 inner_auroc_ge_f2 0.7018 (17s)
+2026-08-10 11:07:49,452 [INFO] [r0f1] epoch 030/040 loss 0.2029 inner_auroc_ge_f2 0.7018 (17s)
+2026-08-10 11:08:06,930 [INFO] [r0f1] epoch 031/040 loss 0.2047 inner_auroc_ge_f2 0.7038 (17s)
+2026-08-10 11:08:26,854 [INFO] [r0f1] epoch 032/040 loss 0.2016 inner_auroc_ge_f2 0.7071 (20s) *
+2026-08-10 11:08:45,269 [INFO] [r0f1] epoch 033/040 loss 0.1915 inner_auroc_ge_f2 0.7078 (18s) *
+2026-08-10 11:09:04,252 [INFO] [r0f1] epoch 034/040 loss 0.1989 inner_auroc_ge_f2 0.7101 (19s) *
+2026-08-10 11:09:23,835 [INFO] [r0f1] epoch 035/040 loss 0.1968 inner_auroc_ge_f2 0.7114 (20s) *
+2026-08-10 11:09:43,249 [INFO] [r0f1] epoch 036/040 loss 0.2031 inner_auroc_ge_f2 0.7140 (19s) *
+2026-08-10 11:10:01,435 [INFO] [r0f1] epoch 037/040 loss 0.2002 inner_auroc_ge_f2 0.7140 (18s)
+2026-08-10 11:10:21,274 [INFO] [r0f1] epoch 038/040 loss 0.1894 inner_auroc_ge_f2 0.7144 (20s) *
+2026-08-10 11:10:38,758 [INFO] [r0f1] epoch 039/040 loss 0.1951 inner_auroc_ge_f2 0.7150 (17s) *
+2026-08-10 11:10:58,630 [INFO] [r0f1] epoch 040/040 loss 0.1949 inner_auroc_ge_f2 0.7154 (20s) *
+2026-08-10 11:11:14,766 [INFO] [r0f1] inner 0.7154 -> outer 0.8234  saved resnet18_roi_r0f1.pt
+2026-08-10 11:12:53,091 [INFO] [r0f2] epoch 001/040 loss 0.7046 inner_auroc_ge_f2 0.3868 (30s) *
+2026-08-10 11:13:14,011 [INFO] [r0f2] epoch 002/040 loss 0.3891 inner_auroc_ge_f2 0.6093 (21s) *
+2026-08-10 11:13:32,495 [INFO] [r0f2] epoch 003/040 loss 0.3408 inner_auroc_ge_f2 0.6433 (18s) *
+2026-08-10 11:13:50,517 [INFO] [r0f2] epoch 004/040 loss 0.3301 inner_auroc_ge_f2 0.6536 (18s) *
+2026-08-10 11:14:10,823 [INFO] [r0f2] epoch 005/040 loss 0.3268 inner_auroc_ge_f2 0.6258 (20s)
+2026-08-10 11:14:28,884 [INFO] [r0f2] epoch 006/040 loss 0.3102 inner_auroc_ge_f2 0.6559 (18s) *
+2026-08-10 11:14:48,410 [INFO] [r0f2] epoch 007/040 loss 0.3033 inner_auroc_ge_f2 0.6942 (20s) *
+2026-08-10 11:15:07,739 [INFO] [r0f2] epoch 008/040 loss 0.3031 inner_auroc_ge_f2 0.7074 (19s) *
+2026-08-10 11:15:26,992 [INFO] [r0f2] epoch 009/040 loss 0.2968 inner_auroc_ge_f2 0.6843 (19s)
+2026-08-10 11:15:46,009 [INFO] [r0f2] epoch 010/040 loss 0.2897 inner_auroc_ge_f2 0.6988 (19s)
+2026-08-10 11:16:05,455 [INFO] [r0f2] epoch 011/040 loss 0.2820 inner_auroc_ge_f2 0.7012 (19s)
+2026-08-10 11:16:23,150 [INFO] [r0f2] epoch 012/040 loss 0.2741 inner_auroc_ge_f2 0.7236 (18s) *
+2026-08-10 11:16:41,014 [INFO] [r0f2] epoch 013/040 loss 0.2697 inner_auroc_ge_f2 0.7355 (18s) *
+2026-08-10 11:16:58,718 [INFO] [r0f2] epoch 014/040 loss 0.2655 inner_auroc_ge_f2 0.7666 (18s) *
+2026-08-10 11:17:18,659 [INFO] [r0f2] epoch 015/040 loss 0.2598 inner_auroc_ge_f2 0.7772 (20s) *
+2026-08-10 11:17:38,215 [INFO] [r0f2] epoch 016/040 loss 0.2505 inner_auroc_ge_f2 0.7676 (20s)
+2026-08-10 11:17:56,518 [INFO] [r0f2] epoch 017/040 loss 0.2507 inner_auroc_ge_f2 0.7580 (18s)
+2026-08-10 11:18:15,658 [INFO] [r0f2] epoch 018/040 loss 0.2517 inner_auroc_ge_f2 0.7471 (19s)
+2026-08-10 11:18:33,507 [INFO] [r0f2] epoch 019/040 loss 0.2434 inner_auroc_ge_f2 0.7478 (18s)
+2026-08-10 11:18:52,902 [INFO] [r0f2] epoch 020/040 loss 0.2346 inner_auroc_ge_f2 0.7537 (19s)
+2026-08-10 11:19:14,281 [INFO] [r0f2] epoch 021/040 loss 0.2301 inner_auroc_ge_f2 0.7524 (21s)
+2026-08-10 11:19:32,386 [INFO] [r0f2] epoch 022/040 loss 0.2305 inner_auroc_ge_f2 0.7524 (18s)
+2026-08-10 11:19:49,973 [INFO] [r0f2] epoch 023/040 loss 0.2245 inner_auroc_ge_f2 0.7484 (18s)
+2026-08-10 11:19:49,973 [INFO] [r0f2] early stop at epoch 23 (best 0.7772 @ 15)
+2026-08-10 11:20:02,707 [INFO] [r0f2] inner 0.7772 -> outer 0.6774  saved resnet18_roi_r0f2.pt
+2026-08-10 11:20:47,385 [INFO] [r0f3] epoch 001/040 loss 0.8649 inner_auroc_ge_f2 0.6042 (24s) *
+2026-08-10 11:21:04,429 [INFO] [r0f3] epoch 002/040 loss 0.4456 inner_auroc_ge_f2 0.5654 (17s)
+2026-08-10 11:21:21,035 [INFO] [r0f3] epoch 003/040 loss 0.3437 inner_auroc_ge_f2 0.5378 (17s)
+2026-08-10 11:21:39,263 [INFO] [r0f3] epoch 004/040 loss 0.3343 inner_auroc_ge_f2 0.5103 (18s)
+2026-08-10 11:21:58,516 [INFO] [r0f3] epoch 005/040 loss 0.3246 inner_auroc_ge_f2 0.5686 (19s)
+2026-08-10 11:22:18,687 [INFO] [r0f3] epoch 006/040 loss 0.3157 inner_auroc_ge_f2 0.5346 (20s)
+2026-08-10 11:22:39,136 [INFO] [r0f3] epoch 007/040 loss 0.3118 inner_auroc_ge_f2 0.5891 (20s)
+2026-08-10 11:22:59,937 [INFO] [r0f3] epoch 008/040 loss 0.3012 inner_auroc_ge_f2 0.5551 (21s)
+2026-08-10 11:23:19,499 [INFO] [r0f3] epoch 009/040 loss 0.2981 inner_auroc_ge_f2 0.5580 (20s)
+2026-08-10 11:23:19,501 [INFO] [r0f3] early stop at epoch 9 (best 0.6042 @ 1)
+2026-08-10 11:23:31,645 [INFO] [r0f3] inner 0.6042 -> outer 0.6529  saved resnet18_roi_r0f3.pt
+2026-08-10 11:24:19,322 [INFO] [r0f4] epoch 001/040 loss 0.6244 inner_auroc_ge_f2 0.3938 (26s) *
+2026-08-10 11:24:37,621 [INFO] [r0f4] epoch 002/040 loss 0.3728 inner_auroc_ge_f2 0.5680 (18s) *
+2026-08-10 11:24:55,344 [INFO] [r0f4] epoch 003/040 loss 0.3535 inner_auroc_ge_f2 0.6497 (18s) *
+2026-08-10 11:25:13,212 [INFO] [r0f4] epoch 004/040 loss 0.3345 inner_auroc_ge_f2 0.7123 (18s) *
+2026-08-10 11:25:32,973 [INFO] [r0f4] epoch 005/040 loss 0.3228 inner_auroc_ge_f2 0.6961 (20s)
+2026-08-10 11:25:53,685 [INFO] [r0f4] epoch 006/040 loss 0.3185 inner_auroc_ge_f2 0.7028 (21s)
+2026-08-10 11:26:15,504 [INFO] [r0f4] epoch 007/040 loss 0.3149 inner_auroc_ge_f2 0.6968 (22s)
+2026-08-10 11:26:35,455 [INFO] [r0f4] epoch 008/040 loss 0.3001 inner_auroc_ge_f2 0.7177 (20s) *
+2026-08-10 11:26:54,391 [INFO] [r0f4] epoch 009/040 loss 0.2938 inner_auroc_ge_f2 0.7114 (19s)
+2026-08-10 11:27:16,434 [INFO] [r0f4] epoch 010/040 loss 0.2847 inner_auroc_ge_f2 0.6939 (22s)
+2026-08-10 11:27:39,916 [INFO] [r0f4] epoch 011/040 loss 0.2881 inner_auroc_ge_f2 0.6720 (23s)
+2026-08-10 11:28:03,435 [INFO] [r0f4] epoch 012/040 loss 0.2772 inner_auroc_ge_f2 0.6478 (24s)
+2026-08-10 11:28:26,142 [INFO] [r0f4] epoch 013/040 loss 0.2709 inner_auroc_ge_f2 0.6542 (23s)
+2026-08-10 11:28:48,205 [INFO] [r0f4] epoch 014/040 loss 0.2664 inner_auroc_ge_f2 0.6532 (22s)
+2026-08-10 11:29:10,786 [INFO] [r0f4] epoch 015/040 loss 0.2652 inner_auroc_ge_f2 0.6796 (23s)
+2026-08-10 11:29:32,343 [INFO] [r0f4] epoch 016/040 loss 0.2639 inner_auroc_ge_f2 0.6840 (22s)
+2026-08-10 11:29:32,343 [INFO] [r0f4] early stop at epoch 16 (best 0.7177 @ 8)
+2026-08-10 11:29:46,021 [INFO] [r0f4] inner 0.7177 -> outer 0.6647  saved resnet18_roi_r0f4.pt
+2026-08-10 11:30:35,941 [INFO] [r1f0] epoch 001/040 loss 0.9091 inner_auroc_ge_f2 0.5302 (29s) *
+2026-08-10 11:30:55,671 [INFO] [r1f0] epoch 002/040 loss 0.4451 inner_auroc_ge_f2 0.5792 (20s) *
+2026-08-10 11:31:16,071 [INFO] [r1f0] epoch 003/040 loss 0.3406 inner_auroc_ge_f2 0.5392 (20s)
+2026-08-10 11:31:36,867 [INFO] [r1f0] epoch 004/040 loss 0.3330 inner_auroc_ge_f2 0.5633 (21s)
+2026-08-10 11:31:57,745 [INFO] [r1f0] epoch 005/040 loss 0.3262 inner_auroc_ge_f2 0.5987 (21s) *
+2026-08-10 11:32:17,569 [INFO] [r1f0] epoch 006/040 loss 0.3187 inner_auroc_ge_f2 0.5894 (20s)
+2026-08-10 11:32:38,756 [INFO] [r1f0] epoch 007/040 loss 0.3082 inner_auroc_ge_f2 0.6116 (21s) *
+2026-08-10 11:32:58,880 [INFO] [r1f0] epoch 008/040 loss 0.3007 inner_auroc_ge_f2 0.5983 (20s)
+2026-08-10 11:33:21,419 [INFO] [r1f0] epoch 009/040 loss 0.2998 inner_auroc_ge_f2 0.6334 (23s) *
+2026-08-10 11:33:44,070 [INFO] [r1f0] epoch 010/040 loss 0.2811 inner_auroc_ge_f2 0.6625 (23s) *
+2026-08-10 11:34:05,829 [INFO] [r1f0] epoch 011/040 loss 0.2814 inner_auroc_ge_f2 0.6582 (22s)
+2026-08-10 11:34:27,823 [INFO] [r1f0] epoch 012/040 loss 0.2833 inner_auroc_ge_f2 0.6750 (22s) *
+2026-08-10 11:34:49,121 [INFO] [r1f0] epoch 013/040 loss 0.2708 inner_auroc_ge_f2 0.6704 (21s)
+2026-08-10 11:35:09,977 [INFO] [r1f0] epoch 014/040 loss 0.2644 inner_auroc_ge_f2 0.6853 (21s) *
+2026-08-10 11:35:31,349 [INFO] [r1f0] epoch 015/040 loss 0.2628 inner_auroc_ge_f2 0.7081 (21s) *
+2026-08-10 11:35:53,104 [INFO] [r1f0] epoch 016/040 loss 0.2586 inner_auroc_ge_f2 0.7266 (22s) *
+2026-08-10 11:36:14,687 [INFO] [r1f0] epoch 017/040 loss 0.2539 inner_auroc_ge_f2 0.7203 (22s)
+2026-08-10 11:36:35,332 [INFO] [r1f0] epoch 018/040 loss 0.2470 inner_auroc_ge_f2 0.7190 (21s)
+2026-08-10 11:36:54,320 [INFO] [r1f0] epoch 019/040 loss 0.2450 inner_auroc_ge_f2 0.7197 (19s)
+2026-08-10 11:37:12,596 [INFO] [r1f0] epoch 020/040 loss 0.2357 inner_auroc_ge_f2 0.7299 (18s) *
+2026-08-10 11:37:30,643 [INFO] [r1f0] epoch 021/040 loss 0.2318 inner_auroc_ge_f2 0.7418 (18s) *
+2026-08-10 11:37:49,084 [INFO] [r1f0] epoch 022/040 loss 0.2273 inner_auroc_ge_f2 0.7395 (18s)
+2026-08-10 11:38:06,683 [INFO] [r1f0] epoch 023/040 loss 0.2279 inner_auroc_ge_f2 0.7355 (18s)
+2026-08-10 11:38:25,514 [INFO] [r1f0] epoch 024/040 loss 0.2220 inner_auroc_ge_f2 0.7402 (19s)
+2026-08-10 11:38:42,859 [INFO] [r1f0] epoch 025/040 loss 0.2126 inner_auroc_ge_f2 0.7412 (17s)
+2026-08-10 11:39:02,260 [INFO] [r1f0] epoch 026/040 loss 0.2120 inner_auroc_ge_f2 0.7478 (19s) *
+2026-08-10 11:39:24,878 [INFO] [r1f0] epoch 027/040 loss 0.2066 inner_auroc_ge_f2 0.7468 (23s)
+2026-08-10 11:39:46,366 [INFO] [r1f0] epoch 028/040 loss 0.2086 inner_auroc_ge_f2 0.7461 (21s)
+2026-08-10 11:40:14,605 [INFO] [r1f0] epoch 029/040 loss 0.2123 inner_auroc_ge_f2 0.7471 (28s)
+2026-08-10 11:40:39,095 [INFO] [r1f0] epoch 030/040 loss 0.2029 inner_auroc_ge_f2 0.7498 (24s) *
+2026-08-10 11:41:03,209 [INFO] [r1f0] epoch 031/040 loss 0.2054 inner_auroc_ge_f2 0.7471 (24s)
+2026-08-10 11:41:27,133 [INFO] [r1f0] epoch 032/040 loss 0.2029 inner_auroc_ge_f2 0.7445 (24s)
+2026-08-10 11:41:51,645 [INFO] [r1f0] epoch 033/040 loss 0.1984 inner_auroc_ge_f2 0.7435 (25s)
+2026-08-10 11:42:23,733 [INFO] [r1f0] epoch 034/040 loss 0.1958 inner_auroc_ge_f2 0.7455 (32s)
+2026-08-10 11:42:49,934 [INFO] [r1f0] epoch 035/040 loss 0.1970 inner_auroc_ge_f2 0.7464 (26s)
+2026-08-10 11:43:10,641 [INFO] [r1f0] epoch 036/040 loss 0.2004 inner_auroc_ge_f2 0.7455 (21s)
+2026-08-10 11:43:33,796 [INFO] [r1f0] epoch 037/040 loss 0.1996 inner_auroc_ge_f2 0.7438 (23s)
+2026-08-10 11:43:56,283 [INFO] [r1f0] epoch 038/040 loss 0.1979 inner_auroc_ge_f2 0.7445 (22s)
+2026-08-10 11:43:56,284 [INFO] [r1f0] early stop at epoch 38 (best 0.7498 @ 30)
+2026-08-10 11:44:14,053 [INFO] [r1f0] inner 0.7498 -> outer 0.7381  saved resnet18_roi_r1f0.pt
+2026-08-10 11:45:15,464 [INFO] [r1f1] epoch 001/040 loss 1.2705 inner_auroc_ge_f2 0.3590 (40s) *
+2026-08-10 11:45:39,086 [INFO] [r1f1] epoch 002/040 loss 0.6918 inner_auroc_ge_f2 0.4321 (24s) *
+2026-08-10 11:46:08,240 [INFO] [r1f1] epoch 003/040 loss 0.3493 inner_auroc_ge_f2 0.5721 (29s) *
+2026-08-10 11:46:36,606 [INFO] [r1f1] epoch 004/040 loss 0.3365 inner_auroc_ge_f2 0.5641 (28s)
+2026-08-10 11:47:01,993 [INFO] [r1f1] epoch 005/040 loss 0.3254 inner_auroc_ge_f2 0.5587 (25s)
+2026-08-10 11:47:28,601 [INFO] [r1f1] epoch 006/040 loss 0.3112 inner_auroc_ge_f2 0.5910 (27s) *
+2026-08-10 11:47:52,959 [INFO] [r1f1] epoch 007/040 loss 0.3083 inner_auroc_ge_f2 0.5984 (24s) *
+2026-08-10 11:48:16,425 [INFO] [r1f1] epoch 008/040 loss 0.3050 inner_auroc_ge_f2 0.5635 (23s)
+2026-08-10 11:48:44,225 [INFO] [r1f1] epoch 009/040 loss 0.3028 inner_auroc_ge_f2 0.6167 (28s) *
+2026-08-10 11:49:12,350 [INFO] [r1f1] epoch 010/040 loss 0.2996 inner_auroc_ge_f2 0.6144 (28s)
+2026-08-10 11:49:36,828 [INFO] [r1f1] epoch 011/040 loss 0.2901 inner_auroc_ge_f2 0.5849 (24s)
+2026-08-10 11:49:57,422 [INFO] [r1f1] epoch 012/040 loss 0.2926 inner_auroc_ge_f2 0.5744 (21s)
+2026-08-10 11:50:18,630 [INFO] [r1f1] epoch 013/040 loss 0.2759 inner_auroc_ge_f2 0.5891 (21s)
+2026-08-10 11:50:39,409 [INFO] [r1f1] epoch 014/040 loss 0.2701 inner_auroc_ge_f2 0.5920 (21s)
+/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/multiprocessing/resource_tracker.py:301: UserWarning: resource_tracker: There appear to be 28 leaked semaphore objects to clean up at shutdown: {'/loky-57371-fulxk4wt', '/loky-57371-4bv_66fs', '/loky-57371-0dvvkgiv', '/loky-57371-7jym456d', '/loky-57371-1az1xw8t', '/loky-57371-ajgurjiw', '/loky-57371-y7ze1e1m', '/loky-57371-wc_ey0d6', '/loky-57371-av4ssja2', '/loky-57371-83btjxuo', '/loky-57371-76br5noa', '/loky-57371-ve2_htly', '/loky-57371-n2ibg26s', '/loky-57371-9c3h16fc', '/loky-57371-43viqvg0', '/loky-57371-fbfodje9', '/loky-57371-cuzb77iz', '/loky-57371-mdg48zkj', '/loky-57371-c5lf0zzi', '/loky-57371-emctys_h', '/loky-57371-4r6_05rh', '/loky-57371-1c8ea0w4', '/loky-57371-osvtpew0', '/loky-57371-s1af4aou', '/loky-57371-wbj49ilz', '/loky-57371-st3c6ikk', '/loky-57371-foeytyf4', '/loky-57371-vzjteznj'}
+  warnings.warn(

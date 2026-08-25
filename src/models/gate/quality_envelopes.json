@@ -1,0 +1,62 @@
+{
+  "linear": {
+    "bounds": {
+      "autocorr_lag1": [
+        0.8457970127270905,
+        0.9555580497034525
+      ],
+      "autocorr_lag4": [
+        0.3990712292522232,
+        0.7843176143929403
+      ]
+    },
+    "core": {
+      "autocorr_lag1": [
+        0.8924638822119839,
+        0.953873724220505
+      ],
+      "autocorr_lag4": [
+        0.49724043724413375,
+        0.7520401988962794
+      ]
+    },
+    "meta": {
+      "n": 352,
+      "geometry": "linear",
+      "cv_median": 0.18067360240246982,
+      "aniso_median": 0.0987395706411692,
+      "unmeasurable": 0,
+      "fitted_from": "manifest_organ_v3.csv train split (multi-organ)"
+    }
+  },
+  "fan": {
+    "bounds": {
+      "autocorr_lag1": [
+        0.7918936769665372,
+        0.9582388073168074
+      ],
+      "autocorr_lag4": [
+        0.26475665530843384,
+        0.7896134309346599
+      ]
+    },
+    "core": {
+      "autocorr_lag1": [
+        0.8435028676651546,
+        0.9544328648499794
+      ],
+      "autocorr_lag4": [
+        0.3568543012924972,
+        0.7670969256009675
+      ]
+    },
+    "meta": {
+      "n": 2557,
+      "geometry": "fan",
+      "cv_median": 0.23213290926428165,
+      "aniso_median": 0.1095352030280517,
+      "unmeasurable": 0,
+      "fitted_from": "manifest_organ_v3.csv train split (multi-organ)"
+    }
+  }
+}

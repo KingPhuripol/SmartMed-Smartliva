@@ -1,0 +1,2 @@
+{"arm": "B", "epoch": 0, "train_loss": 0.20125, "val_liver_dice_256": 0.932061, "lr": 9.973e-05, "epoch_s": 657.8, "seed": 42}
+{"arm": "B", "epoch": 1, "train_loss": 0.193539, "val_liver_dice_256": 0.933938, "lr": 9.891e-05, "epoch_s": 629.9, "seed": 42}

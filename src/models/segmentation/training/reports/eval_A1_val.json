@@ -1,0 +1,169 @@
+{
+  "arm": "A1",
+  "split": "val",
+  "n_images": 1505,
+  "n_patients": 343,
+  "elapsed_s": 30.7,
+  "metric_definition": {
+    "dice": "per-image, then averaged",
+    "headline": "unweighted macro average over views",
+    "empty_ground_truth": "excluded from Dice, scored as empty_gt_fp_rate",
+    "empty_gt_fp_threshold": 0.01
+  },
+  "headline": {
+    "liver_macro_dice": 0.894874,
+    "liver_micro_dice": 0.887059,
+    "gallbladder_macro_dice_quotable_views": 0.78786
+  },
+  "per_view": {
+    "GBH": {
+      "n_images": 367,
+      "liver": {
+        "n": 339,
+        "dice_mean": 0.803579,
+        "dice_median": 0.871274,
+        "dice_p10": 0.529946,
+        "iou_mean": 0.704907,
+        "quotable": true
+      },
+      "gallbladder": {
+        "n": 338,
+        "dice_mean": 0.78786,
+        "dice_median": 0.887349,
+        "dice_p10": 0.421502,
+        "iou_mean": 0.692229,
+        "quotable": true
+      }
+    },
+    "RH": {
+      "n_images": 292,
+      "liver": {
+        "n": 292,
+        "dice_mean": 0.935582,
+        "dice_median": 0.960793,
+        "dice_p10": 0.864625,
+        "iou_mean": 0.885978,
+        "quotable": true
+      },
+      "gallbladder": {
+        "n": 16,
+        "dice_mean": 0.627386,
+        "dice_median": 0.852948,
+        "dice_p10": 0.0,
+        "iou_mean": 0.568051,
+        "quotable": false
+      }
+    },
+    "LHP": {
+      "n_images": 207,
+      "liver": {
+        "n": 207,
+        "dice_mean": 0.911961,
+        "dice_median": 0.950935,
+        "dice_p10": 0.795119,
+        "iou_mean": 0.853136,
+        "quotable": true
+      },
+      "gallbladder": {
+        "n": 0,
+        "dice_mean": null,
+        "dice_median": null,
+        "dice_p10": null,
+        "iou_mean": null,
+        "quotable": false
+      }
+    },
+    "FPH": {
+      "n_images": 203,
+      "liver": {
+        "n": 203,
+        "dice_mean": 0.852877,
+        "dice_median": 0.874705,
+        "dice_p10": 0.728681,
+        "iou_mean": 0.75317,
+        "quotable": true
+      },
+      "gallbladder": {
+        "n": 11,
+        "dice_mean": 0.722637,
+        "dice_median": 0.760013,
+        "dice_p10": 0.537917,
+        "iou_mean": 0.621191,
+        "quotable": false
+      }
+    },
+    "LHA": {
+      "n_images": 190,
+      "liver": {
+        "n": 190,
+        "dice_mean": 0.934755,
+        "dice_median": 0.950932,
+        "dice_p10": 0.870774,
+        "iou_mean": 0.881417,
+        "quotable": true
+      },
+      "gallbladder": {
+        "n": 0,
+        "dice_mean": null,
+        "dice_median": null,
+        "dice_p10": null,
+        "iou_mean": null,
+        "quotable": false
+      }
+    },
+    "SPH": {
+      "n_images": 134,
+      "liver": {
+        "n": 134,
+        "dice_mean": 0.937709,
+        "dice_median": 0.957975,
+        "dice_p10": 0.879849,
+        "iou_mean": 0.890799,
+        "quotable": true
+      },
+      "gallbladder": {
+        "n": 3,
+        "dice_mean": 0.737519,
+        "dice_median": 0.752496,
+        "dice_p10": 0.613454,
+        "iou_mean": 0.599418,
+        "quotable": false
+      }
+    },
+    "LHV": {
+      "n_images": 112,
+      "liver": {
+        "n": 112,
+        "dice_mean": 0.887652,
+        "dice_median": 0.913102,
+        "dice_p10": 0.762306,
+        "iou_mean": 0.807099,
+        "quotable": true
+      },
+      "gallbladder": {
+        "n": 0,
+        "dice_mean": null,
+        "dice_median": null,
+        "dice_p10": null,
+        "iou_mean": null,
+        "quotable": false
+      }
+    }
+  },
+  "safety_empty_ground_truth": {
+    "n_images": 28,
+    "n_false_positives": 25,
+    "fp_rate": 0.892857,
+    "fp_rate_ci95": [
+      0.728038,
+      0.962882
+    ],
+    "clean_rate": 0.107143,
+    "clean_rate_ci95": [
+      0.037118,
+      0.271962
+    ],
+    "predicted_liver_area_median": 0.082384,
+    "predicted_liver_area_max": 0.190465
+  }
+}

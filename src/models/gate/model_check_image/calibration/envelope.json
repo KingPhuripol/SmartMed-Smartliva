@@ -1,0 +1,138 @@
+{
+  "bounds": {
+    "autocorr_lag1": [
+      0.61,
+      0.9445
+    ],
+    "autocorr_lag4": [
+      0.2782,
+      0.7136
+    ]
+  },
+  "core": {
+    "autocorr_lag1": [
+      0.8293,
+      0.9365
+    ],
+    "autocorr_lag4": [
+      0.3411,
+      0.6677
+    ]
+  },
+  "meta": {
+    "fitted_at": "2026-07-21T14:47:48+00:00",
+    "bounds_percentile_trimmed_each_side": 0.1,
+    "core_percentile_trimmed_each_side": 1.5,
+    "verdict_bands": "ทุกฟีเจอร์อยู่ใน core -> ยอมรับ | อยู่ใน bounds แต่หลุด core -> ก้ำกึ่ง ต้องให้คนดู | หลุด bounds -> ปฏิเสธ",
+    "n_measured": 12200,
+    "n_skipped_unmeasurable": {
+      "agent2_lesion_train": 3,
+      "fibrosis_korea_F0": 0,
+      "fibrosis_korea_F1": 15,
+      "fibrosis_korea_F2": 20,
+      "fibrosis_korea_F3": 30,
+      "fibrosis_korea_F4": 7,
+      "dhaka_liver": 0,
+      "dhaka_hepatic": 0,
+      "dhaka_portal": 0,
+      "behsof_nafld": 0,
+      "behsof_non_nafld": 0,
+      "fibrosis_te": 0
+    },
+    "sources": {
+      "agent2_lesion_train": "/Users/mildpanuwat/Downloads/Liver Ultrasound Detection/train/train/images/*.jpg",
+      "fibrosis_korea_F0": "/Users/mildpanuwat/Downloads/Fibrosis/Dataset/Dataset/F0/*",
+      "fibrosis_korea_F1": "/Users/mildpanuwat/Downloads/Fibrosis/Dataset/Dataset/F1/*",
+      "fibrosis_korea_F2": "/Users/mildpanuwat/Downloads/Fibrosis/Dataset/Dataset/F2/*",
+      "fibrosis_korea_F3": "/Users/mildpanuwat/Downloads/Fibrosis/Dataset/Dataset/F3/*",
+      "fibrosis_korea_F4": "/Users/mildpanuwat/Downloads/Fibrosis/Dataset/Dataset/F4/*",
+      "dhaka_liver": "/Volumes/Smartmed/SmartLiva/SmartLiva New Version/SmartLIVA/data/abdominal_multiorgan_dhaka/organ_classification_1/Liver/*",
+      "dhaka_hepatic": "/Volumes/Smartmed/SmartLiva/SmartLiva New Version/SmartLIVA/data/abdominal_multiorgan_dhaka/organ_classification_1/Hepatic/*",
+      "dhaka_portal": "/Volumes/Smartmed/SmartLiva/SmartLiva New Version/SmartLIVA/data/abdominal_multiorgan_dhaka/organ_classification_1/Portal/*",
+      "behsof_nafld": "/Users/mildpanuwat/Downloads/BEHSOF/NAFLD/*",
+      "behsof_non_nafld": "/Users/mildpanuwat/Downloads/BEHSOF/Non-NAFLD/*",
+      "fibrosis_te": "/Users/mildpanuwat/Downloads/liver-fibrosis-severity-prediction/images/images/*"
+    },
+    "per_source_median": {
+      "agent2_lesion_train": {
+        "cv": 0.262,
+        "autocorr_lag1": 0.923,
+        "autocorr_lag4": 0.5982
+      },
+      "fibrosis_korea_F0": {
+        "cv": 0.2418,
+        "autocorr_lag1": 0.9177,
+        "autocorr_lag4": 0.5786
+      },
+      "fibrosis_korea_F1": {
+        "cv": 0.4495,
+        "autocorr_lag1": 0.8723,
+        "autocorr_lag4": 0.4849
+      },
+      "fibrosis_korea_F2": {
+        "cv": 0.5019,
+        "autocorr_lag1": 0.863,
+        "autocorr_lag4": 0.4566
+      },
+      "fibrosis_korea_F3": {
+        "cv": 0.508,
+        "autocorr_lag1": 0.8615,
+        "autocorr_lag4": 0.4507
+      },
+      "fibrosis_korea_F4": {
+        "cv": 0.3394,
+        "autocorr_lag1": 0.9028,
+        "autocorr_lag4": 0.5333
+      },
+      "dhaka_liver": {
+        "cv": 0.1401,
+        "autocorr_lag1": 0.9053,
+        "autocorr_lag4": 0.5212
+      },
+      "dhaka_hepatic": {
+        "cv": 0.1499,
+        "autocorr_lag1": 0.9059,
+        "autocorr_lag4": 0.5141
+      },
+      "dhaka_portal": {
+        "cv": 0.1386,
+        "autocorr_lag1": 0.9106,
+        "autocorr_lag4": 0.5347
+      },
+      "behsof_nafld": {
+        "cv": 0.2365,
+        "autocorr_lag1": 0.9105,
+        "autocorr_lag4": 0.518
+      },
+      "behsof_non_nafld": {
+        "cv": 0.2257,
+        "autocorr_lag1": 0.9146,
+        "autocorr_lag4": 0.5512
+      },
+      "fibrosis_te": {
+        "cv": 0.2039,
+        "autocorr_lag1": 0.8933,
+        "autocorr_lag4": 0.4819
+      }
+    },
+    "distribution": {
+      "cv": {
+        "p50": 0.2748,
+        "min": 0.031,
+        "max": 1.4347
+      },
+      "autocorr_lag1": {
+        "p50": 0.9025,
+        "min": 0.5464,
+        "max": 0.947
+      },
+      "autocorr_lag4": {
+        "p50": 0.5103,
+        "min": 0.1893,
+        "max": 0.7461
+      }
+    },
+    "rayleigh_cv_theory": 0.5227,
+    "note": "ทุกค่าเป็นอัตราส่วนหรือสหสัมพันธ์แบบนอร์มัลไลซ์ จึงไม่เปลี่ยนตามความสว่าง ถ้าเพิ่มเครื่องสแกนรุ่นใหม่เข้ามาในข้อมูล ต้องรันสคริปต์นี้ใหม่"
+  }
+}

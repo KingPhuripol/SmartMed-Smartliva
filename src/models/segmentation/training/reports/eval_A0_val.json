@@ -1,0 +1,170 @@
+{
+  "arm": "A0",
+  "split": "val",
+  "n_images": 1505,
+  "n_patients": 343,
+  "elapsed_s": 30.7,
+  "metric_definition": {
+    "dice": "per-image, then averaged",
+    "headline": "unweighted macro average over views",
+    "empty_ground_truth": "excluded from Dice, scored as empty_gt_fp_rate",
+    "empty_gt_fp_threshold": 0.01
+  },
+  "headline": {
+    "liver_macro_dice": 0.932285,
+    "liver_micro_dice": 0.93089,
+    "gallbladder_macro_dice_quotable_views": 0.926672
+  },
+  "per_view": {
+    "GBH": {
+      "n_images": 367,
+      "liver": {
+        "n": 339,
+        "dice_mean": 0.894697,
+        "dice_median": 0.9303,
+        "dice_p10": 0.783472,
+        "iou_mean": 0.823363,
+        "quotable": true
+      },
+      "gallbladder": {
+        "n": 338,
+        "dice_mean": 0.926672,
+        "dice_median": 0.948227,
+        "dice_p10": 0.883133,
+        "iou_mean": 0.872108,
+        "quotable": true
+      }
+    },
+    "RH": {
+      "n_images": 292,
+      "liver": {
+        "n": 292,
+        "dice_mean": 0.962922,
+        "dice_median": 0.972177,
+        "dice_p10": 0.93195,
+        "iou_mean": 0.929783,
+        "quotable": true
+      },
+      "gallbladder": {
+        "n": 16,
+        "dice_mean": 0.638517,
+        "dice_median": 0.921921,
+        "dice_p10": 0.0,
+        "iou_mean": 0.586347,
+        "quotable": false
+      }
+    },
+    "LHP": {
+      "n_images": 207,
+      "liver": {
+        "n": 207,
+        "dice_mean": 0.944697,
+        "dice_median": 0.964072,
+        "dice_p10": 0.882057,
+        "iou_mean": 0.899269,
+        "quotable": true
+      },
+      "gallbladder": {
+        "n": 0,
+        "dice_mean": null,
+        "dice_median": null,
+        "dice_p10": null,
+        "iou_mean": null,
+        "quotable": false
+      }
+    },
+    "FPH": {
+      "n_images": 203,
+      "liver": {
+        "n": 203,
+        "dice_mean": 0.914024,
+        "dice_median": 0.927724,
+        "dice_p10": 0.854493,
+        "iou_mean": 0.845381,
+        "quotable": true
+      },
+      "gallbladder": {
+        "n": 11,
+        "dice_mean": 0.822013,
+        "dice_median": 0.919214,
+        "dice_p10": 0.695949,
+        "iou_mean": 0.756513,
+        "quotable": false
+      }
+    },
+    "LHA": {
+      "n_images": 190,
+      "liver": {
+        "n": 190,
+        "dice_mean": 0.942055,
+        "dice_median": 0.958175,
+        "dice_p10": 0.894067,
+        "iou_mean": 0.893843,
+        "quotable": true
+      },
+      "gallbladder": {
+        "n": 0,
+        "dice_mean": null,
+        "dice_median": null,
+        "dice_p10": null,
+        "iou_mean": null,
+        "quotable": false
+      }
+    },
+    "SPH": {
+      "n_images": 134,
+      "liver": {
+        "n": 134,
+        "dice_mean": 0.963107,
+        "dice_median": 0.969498,
+        "dice_p10": 0.940241,
+        "iou_mean": 0.929917,
+        "quotable": true
+      },
+      "gallbladder": {
+        "n": 3,
+        "dice_mean": 0.787375,
+        "dice_median": 0.881368,
+        "dice_p10": 0.640738,
+        "iou_mean": 0.6718,
+        "quotable": false
+      }
+    },
+    "LHV": {
+      "n_images": 112,
+      "liver": {
+        "n": 112,
+        "dice_mean": 0.90449,
+        "dice_median": 0.923794,
+        "dice_p10": 0.814963,
+        "iou_mean": 0.832122,
+        "quotable": true
+      },
+      "gallbladder": {
+        "n": 0,
+        "dice_mean": null,
+        "dice_median": null,
+        "dice_p10": null,
+        "iou_mean": null,
+        "quotable": false
+      }
+    }
+  },
+  "annotation_gap_diagnostic": {
+    "interpretation": "Images with no liver polygon. MEASURED 2026-08-11: these are annotation gaps, not true negatives -- predicted liver area matches the annotated area on comparable labelled images. A high disagreement rate here means incomplete labels, NOT model error. Not a pass/fail gate.",
+    "n_images": 28,
+    "n_disagreeing": 26,
+    "disagreement_rate": 0.928571,
+    "disagreement_rate_ci95": [
+      0.773543,
+      0.980188
+    ],
+    "agreement_rate": 0.071429,
+    "agreement_rate_ci95": [
+      0.019812,
+      0.226457
+    ],
+    "predicted_liver_area_median": 0.127391,
+    "predicted_liver_area_max": 0.25163
+  }
+}

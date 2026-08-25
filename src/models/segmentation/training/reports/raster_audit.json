@@ -1,0 +1,75 @@
+{
+  "n_sampled": 200,
+  "n_compared": 200,
+  "seed": 42,
+  "min_polygon_area_px": 1.0,
+  "per_class": {
+    "liver": {
+      "n": 197,
+      "mean_iou": 0.988393,
+      "min_iou": 0.957933,
+      "mean_boundary_fraction": 1.0,
+      "min_boundary_fraction": 1.0
+    },
+    "gallbladder": {
+      "n": 54,
+      "mean_iou": 0.968027,
+      "min_iou": 0.925532,
+      "mean_boundary_fraction": 1.0,
+      "min_boundary_fraction": 1.0
+    }
+  },
+  "unreadable": [],
+  "worst_10": [
+    {
+      "iou": 0.925532,
+      "class": "gallbladder",
+      "file": "Patient_2522/RH/1.2.826.0.1.3680043.2.461.12563429.3233870426.json"
+    },
+    {
+      "iou": 0.943925,
+      "class": "gallbladder",
+      "file": "Patient_2283/GBH/1.2.826.0.1.3680043.2.461.12821136.544558310.json"
+    },
+    {
+      "iou": 0.944806,
+      "class": "gallbladder",
+      "file": "Patient_1528/GBH/1.2.826.0.1.3680043.2.461.12849810.2421677943.json"
+    },
+    {
+      "iou": 0.947089,
+      "class": "gallbladder",
+      "file": "Patient_2069/GBH/1.2.826.0.1.3680043.2.461.12962375.1582265242.json"
+    },
+    {
+      "iou": 0.947987,
+      "class": "gallbladder",
+      "file": "Patient_1006/GBH/1.2.826.0.1.3680043.2.461.13198319.3035995010.json"
+    },
+    {
+      "iou": 0.952708,
+      "class": "gallbladder",
+      "file": "Patient_1187/GBH/1.2.826.0.1.3680043.2.461.13177345.1189287220.json"
+    },
+    {
+      "iou": 0.954652,
+      "class": "gallbladder",
+      "file": "Patient_2344/GBH/1.2.826.0.1.3680043.2.461.13015733.1607015530.json"
+    },
+    {
+      "iou": 0.955945,
+      "class": "gallbladder",
+      "file": "Patient_2484/GBH/1.2.826.0.1.3680043.2.461.12704612.4025054083.json"
+    },
+    {
+      "iou": 0.957508,
+      "class": "gallbladder",
+      "file": "Patient_0427/GBH/1.2.826.0.1.3680043.2.461.11465221.4082734895.json"
+    },
+    {
+      "iou": 0.957849,
+      "class": "gallbladder",
+      "file": "Patient_2224/GBH/1.2.826.0.1.3680043.2.461.12763677.1755377583.json"
+    }
+  ]
+}

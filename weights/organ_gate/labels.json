@@ -1,0 +1,14 @@
+{
+  "classes": [
+    "breast",
+    "carotid",
+    "fetus",
+    "gallbladder",
+    "kidney",
+    "liver",
+    "other",
+    "pancreas",
+    "spleen",
+    "thyroid"
+  ]
+}

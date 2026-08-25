@@ -1,0 +1,42 @@
+{
+  "endpoint": "ge_f2",
+  "test": "paired subject-level bootstrap on fold-standardised scores; cleared when the 95% CI of the delta excludes 0",
+  "repeats": 3,
+  "n_exams": 730,
+  "n_bootstrap": 2000,
+  "headline": {
+    "run": "resnet18_roi",
+    "auroc": 0.7385537790697675,
+    "n_folds": 15
+  },
+  "controls": [
+    {
+      "run": "probe_chrome",
+      "auroc": 0.6418319144518273,
+      "delta": 0.09672186461794019,
+      "delta_ci_low": 0.04041238949314148,
+      "delta_ci_high": 0.15592208625013818,
+      "cleared": true,
+      "n_folds": 15
+    },
+    {
+      "run": "probe_mask_shape",
+      "auroc": 0.6375363372093024,
+      "delta": 0.10101744186046513,
+      "delta_ci_low": 0.05038044058826377,
+      "delta_ci_high": 0.1569442570805933,
+      "cleared": true,
+      "n_folds": 15
+    },
+    {
+      "run": "B3_metadata",
+      "auroc": 0.5911544850498338,
+      "delta": 0.14739929401993368,
+      "delta_ci_low": 0.07810143691478956,
+      "delta_ci_high": 0.2150821476261702,
+      "cleared": true,
+      "n_folds": 15
+    }
+  ],
+  "passed": true
+}
