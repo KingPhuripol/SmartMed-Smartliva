@@ -35,6 +35,7 @@ Thumbs.db
 *.log
 combined_results/
 outputs/
+runs/
 .vercel
 .vercel/
 
