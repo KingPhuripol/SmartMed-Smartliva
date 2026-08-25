@@ -45,11 +45,13 @@ data/flywheel/*.jpg
 data/flywheel/*.png
 data/flywheel/*.db
 
-# Model Weights — Tracked out-of-band via cloud artifact storage
+# Model Weights & Archives — Tracked out-of-band via cloud artifact storage
 *.pt
 *.pth
 *.ckpt
 *.onnx
 *.safetensors
+*.zip
+*.tar.gz
 _frozen/
 !weights/README.md
