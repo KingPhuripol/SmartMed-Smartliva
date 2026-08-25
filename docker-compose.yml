@@ -1,11 +1,11 @@
 version: '3.8'
 
 services:
-  smartliva-backend:
+  smartliva-ai:
     build:
       context: .
       dockerfile: Dockerfile
-    container_name: smartliva_ai_backend
+    container_name: smartliva_clinical_ai
     restart: unless-stopped
     ports:
       - "8000:8000"
@@ -14,9 +14,10 @@ services:
       - HOST=0.0.0.0
       - GEMINI_API_KEY=${GEMINI_API_KEY:-}
     volumes:
+      - ./weights:/app/weights:ro
       - ./data/flywheel:/app/data/flywheel
     healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:8000/api/health"]
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
       interval: 30s
       timeout: 10s
       retries: 3

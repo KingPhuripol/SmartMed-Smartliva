@@ -56,12 +56,23 @@ def evaluate_steatosis(
         near_mask = liver_pixels & (np.arange(h)[:, None] <= near_cutoff)
         far_mask = liver_pixels & (np.arange(h)[:, None] >= far_cutoff)
 
-        near_mean = float(np.mean(gray_img[near_mask])) if np.any(near_mask) else 90.0
-        far_mean = float(np.mean(gray_img[far_mask])) if np.any(far_mask) else 90.0
+        near_vals = gray_img[near_mask]
+        far_vals = gray_img[far_mask]
+
+        def _robust_parenchyma_mean(vals: np.ndarray) -> float:
+            if len(vals) < 10:
+                return float(np.mean(vals)) if len(vals) > 0 else 90.0
+            # Trim bottom 10% (vascular lumens/fluid) and top 10% (vessel walls/calcifications)
+            p10, p90 = np.percentile(vals, [10, 90])
+            filtered = vals[(vals >= p10) & (vals <= p90)]
+            return float(np.mean(filtered)) if len(filtered) > 0 else float(np.mean(vals))
+
+        near_mean = _robust_parenchyma_mean(near_vals)
+        far_mean = _robust_parenchyma_mean(far_vals)
 
         # Attenuation drop (in steatosis, far-field gets markedly darker than near-field)
         attenuation_ratio = float(near_mean / max(far_mean, 1.0))
-        mean_intensity = float(np.mean(gray_img[liver_pixels]))
+        mean_intensity = float(_robust_parenchyma_mean(gray_img[liver_pixels]))
     else:
         attenuation_ratio = 1.05
         mean_intensity = float(np.mean(gray_img[liver_pixels]))

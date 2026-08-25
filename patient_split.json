@@ -1,0 +1,47 @@
+{
+  "train": {
+    "patients": [
+      "case1",
+      "case2",
+      "case3",
+      "case6",
+      "case7",
+      "case8"
+    ],
+    "num_patients": 6,
+    "files": [
+      "public/samples/case2_normal_gbh.jpg",
+      "public/samples/case1_normal_rh.jpg",
+      "public/samples/case6_benign_hemangioma.jpg",
+      "public/samples/case8_malignant_biliary_risk.jpg",
+      "public/samples/case3_normal_lhv.jpg",
+      "public/samples/case3_benign_steatosis.jpg",
+      "public/samples/case7_cirrhosis_f4_hcc.jpg"
+    ]
+  },
+  "val": {
+    "patients": [
+      "case5"
+    ],
+    "num_patients": 1,
+    "files": [
+      "public/samples/case5_steatosis_s2_ffc.jpg"
+    ]
+  },
+  "test": {
+    "patients": [
+      "case4"
+    ],
+    "num_patients": 1,
+    "files": [
+      "public/samples/case4_steatosis_s1.jpg",
+      "public/samples/case4_malignant_hcc.jpg"
+    ]
+  },
+  "audit": {
+    "total_patients": 8,
+    "total_images": 10,
+    "leakage_detected": false,
+    "seed": 42
+  }
+}

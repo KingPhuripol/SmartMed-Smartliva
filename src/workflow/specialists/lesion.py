@@ -48,23 +48,38 @@ def evaluate_lesions(
         has_low_conf = False
 
         for idx, (x1, y1, x2, y2, conf, cls_id) in enumerate(boxes):
-            if conf < 0.60:
-                has_low_conf = True
+            width_px = x2 - x1
+            height_px = y2 - y1
+
+            # 1. Reject tiny speckle noise boxes (< 6px)
+            if width_px < 6 or height_px < 6:
+                continue
 
             cx, cy = (x1 + x2) // 2, (y1 + y2) // 2
-            inside = bool(0 <= cy < h and 0 <= cx < w and mask[cy, cx] == 1)
+            
+            # 2. Strict spatial liver mask containment check
+            # Center must be inside, or box must have >= 25% overlap with liver mask
+            sub_mask = mask[max(0, y1):min(h, y2), max(0, x1):min(w, x2)]
+            liver_overlap = float(np.mean(sub_mask == 1)) if sub_mask.size > 0 else 0.0
+            center_inside = bool(0 <= cy < h and 0 <= cx < w and mask[cy, cx] == 1)
+
+            if not center_inside and liver_overlap < 0.25:
+                # Discard non-hepatic false positive (e.g. rib shadow, bowel gas, abdominal wall)
+                logger.debug(f"Discarding non-hepatic bounding box [{x1},{y1},{x2},{y2}] (overlap={liver_overlap:.2f})")
+                continue
+
+            if conf < 0.60:
+                has_low_conf = True
 
             class_name = LESION_CLASSES.get(
                 int(cls_id), lesion_names.get(int(cls_id), f"Class {cls_id}")
             )
 
             # Approximate physical size if assumed ~0.35 mm/px
-            width_px = x2 - x1
-            height_px = y2 - y1
             size_mm = round(max(width_px, height_px) * 0.35, 1)
 
-            region_id = f"les-region-{idx + 1:02d}"
-            finding_id = f"les-{idx + 1:02d}"
+            region_id = f"les-region-{len(findings) + 1:02d}"
+            finding_id = f"les-{len(findings) + 1:02d}"
 
             # Normalized bounding box coordinates [[x1, y1], [x2, y2]]
             nx1 = max(0.0, min(1.0, x1 / w))
@@ -88,7 +103,7 @@ def evaluate_lesions(
                 "confidence": round(conf, 4),
                 "regionId": region_id,
                 "sizeMm": size_mm,
-                "note": "พบในขอบเขตตับ" if inside else "อยู่นอกขอบเขตตับ",
+                "note": "พบในเนื้อตับ (Intrahepatic)",
             }
             findings.append(finding)
 
@@ -98,7 +113,7 @@ def evaluate_lesions(
                         "class": class_name,
                         "confidence": round(conf, 4),
                         "bbox": [x1, y1, x2, y2],
-                        "inside_liver": inside,
+                        "inside_liver": True,
                     }
                 )
             )
