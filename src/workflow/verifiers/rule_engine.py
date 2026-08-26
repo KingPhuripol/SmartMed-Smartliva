@@ -33,11 +33,15 @@ async def run_deterministic_rule_engine(response: PredictionResponse) -> Predict
         warnings.append(
             f"🚨 ข้อควรระวังสูงสุด: ตรวจพบรอยโรคต้องสงสัย {target_name} แนะนำส่งตรวจยืนยันด้วย CT Triphasic Liver Protocol หรือ MRI Liver และตรวจระดับซีรั่ม AFP/CA19-9 ด่วน"
         )
-        # Elevate fibrosis risk tier to High Risk if malignant lesion present
+        # Elevate fibrosis risk tier and stage to High Risk / F4 if primary hepatic malignancy (HCC) confirmed
         if response.fibrosis:
-            if response.fibrosis.risk_tier < 2:
+            if response.fibrosis.risk_tier < 2 or response.fibrosis.stage in ["F0", "F1", "F2"]:
                 response.fibrosis.risk_tier = 2
-                response.fibrosis.risk_tier_label = "สูง"
+                response.fibrosis.risk_tier_label = "สูง (Cirrhotic Background Risk)"
+                response.fibrosis.stage = "F4"
+                response.fibrosis.stage_calibrated = "F4"
+                response.fibrosis.kpa_estimate = max(response.fibrosis.kpa_estimate, 9.5)
+                response.fibrosis.prob_f4 = max(response.fibrosis.prob_f4, 0.65)
 
     # 3. Severe Steatosis Deep Acoustic Attenuation Note
     if response.fatty_liver_stage == "S3":

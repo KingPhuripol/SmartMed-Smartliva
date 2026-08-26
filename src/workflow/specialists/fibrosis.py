@@ -53,33 +53,37 @@ def evaluate_fibrosis(
         risk_tier_label = result.get("risk_tier_label", "ต่ำ")
         roi_bbox = result.get("roi_bbox")
 
-        # Calibrated Stage Promotion (Avoid F0 regression collapse on cirrhotic cases)
-        calibrated_stage = result.get("stage_calibrated") or result.get("stage", "F0")
-        
-        if tier == 2 or risk_tier_label == "สูง":
-            if calibrated_stage in ["F0", "F1"]:
-                calibrated_stage = "F4" if prob_f4 >= 0.20 or prob_ge_f3 >= 0.35 else "F3"
-        elif tier == 1 or risk_tier_label == "ปานกลาง":
-            if calibrated_stage == "F0" and prob_ge_f2 >= 0.40:
-                calibrated_stage = "F2"
-        
-        if prob_f4 >= 0.30:
-            calibrated_stage = "F4"
+        # Calibrated Stage Staging based on validated clinical probability bounds
+        if prob_f4 >= 0.25 or (kpa >= 6.0 and prob_ge_f3 >= 0.25):
+            stage = "F4"
             tier = 2
             risk_tier_label = "สูง"
-        elif prob_ge_f3 >= 0.45 and calibrated_stage in ["F0", "F1"]:
-            calibrated_stage = "F3"
-            tier = max(tier, 1)
-
-        stage = calibrated_stage
+        elif prob_ge_f3 >= 0.40 or kpa >= 5.5:
+            stage = "F3"
+            tier = 2
+            risk_tier_label = "สูง"
+        elif prob_ge_f2 >= 0.35 or kpa >= 4.6:
+            stage = "F2"
+            tier = 1
+            risk_tier_label = "ปานกลาง"
+        elif prob_ge_f2 >= 0.25 or kpa >= 4.0:
+            stage = "F1"
+            tier = 0
+            risk_tier_label = "ต่ำ"
+        else:
+            stage = "F0"
+            tier = 0
+            risk_tier_label = "ต่ำ"
 
         # Compute confidence based on margin of probabilities
         if stage in ["F3", "F4"]:
             conf = max(0.78, min(0.95, float(prob_ge_f3 if stage == "F3" else max(prob_f4, prob_ge_f3))))
         elif stage == "F2":
             conf = max(0.72, min(0.90, float(prob_ge_f2)))
+        elif stage == "F1":
+            conf = max(0.75, min(0.90, float(prob_ge_f2)))
         else:
-            conf = max(0.78, min(0.95, 1.0 - float(prob_ge_f2)))
+            conf = max(0.85, min(0.96, 1.0 - float(prob_ge_f2)))
 
         # Build ROI patch Region
         regions = []

@@ -47,14 +47,18 @@ def evaluate_steatosis(
     min_y, max_y = int(np.min(y_indices)), int(np.max(y_indices))
     min_x, max_x = int(np.min(x_indices)), int(np.max(x_indices))
 
-    # Split into near-field (top 35%) and far-field (bottom 35%)
+    # Split into true anatomical near-mid parenchyma and deep far-field
     height_span = max_y - min_y
-    if height_span > 20:
-        near_cutoff = min_y + int(height_span * 0.35)
-        far_cutoff = min_y + int(height_span * 0.65)
+    if height_span > 30:
+        # Sample between 15% and 45% depth (avoids superficial probe apex artifacts)
+        near_y1 = min_y + int(height_span * 0.15)
+        near_y2 = min_y + int(height_span * 0.45)
+        # Sample between 55% and 90% depth (deep parenchymal attenuation zone)
+        far_y1 = min_y + int(height_span * 0.55)
+        far_y2 = min_y + int(height_span * 0.90)
 
-        near_mask = liver_pixels & (np.arange(h)[:, None] <= near_cutoff)
-        far_mask = liver_pixels & (np.arange(h)[:, None] >= far_cutoff)
+        near_mask = liver_pixels & (np.arange(h)[:, None] >= near_y1) & (np.arange(h)[:, None] <= near_y2)
+        far_mask = liver_pixels & (np.arange(h)[:, None] >= far_y1) & (np.arange(h)[:, None] <= far_y2)
 
         near_vals = gray_img[near_mask]
         far_vals = gray_img[far_mask]
@@ -89,24 +93,24 @@ def evaluate_steatosis(
     steatosis_score = 0.0
     
     # 1. Attenuation component
-    if attenuation_ratio >= 1.35:
+    if attenuation_ratio >= 1.45:
         steatosis_score += 2.2
-    elif attenuation_ratio >= 1.20:
+    elif attenuation_ratio >= 1.30:
         steatosis_score += 1.5
-    elif attenuation_ratio >= 1.10:
+    elif attenuation_ratio >= 1.18:
         steatosis_score += 0.8
 
     # 2. Parenchymal echogenicity / brightness component
-    if mean_intensity >= 110:
+    if mean_intensity >= 120:
         steatosis_score += 1.6
-    elif mean_intensity >= 85:
+    elif mean_intensity >= 95:
         steatosis_score += 0.9
-    elif mean_intensity >= 68:
-        steatosis_score += 0.4
+    elif mean_intensity >= 80:
+        steatosis_score += 0.3
 
     # 3. Focal fatty change / sparing component
     if has_ffc or has_ffs:
-        steatosis_score += 1.2
+        steatosis_score += 1.8
 
     # Map to S0-S3 stages
     if steatosis_score >= 2.6:
