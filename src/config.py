@@ -15,12 +15,16 @@ MEDSAM2_DIR: Path = THIRD_PARTY_DIR / "MedSAM2"
 
 # Centralized Model Checkpoints (Weights)
 WEIGHTS_DIR: Path = BASE_DIR / "weights"
+PRETRAINED_WEIGHTS_DIR: Path = WEIGHTS_DIR / "pretrained"
 MEDSAM_CKPT: Path = WEIGHTS_DIR / "medsam2" / "MedSAM2_latest.pt"
 MEDSAM_CFG: str = "configs/sam2.1_hiera_t512.yaml"
 YOLO_LESION_PATH: Path = WEIGHTS_DIR / "lesion" / "yolov8_lesion_best.pt"
+MASS_SEG_WEIGHTS_PATH: Path = WEIGHTS_DIR / "lesion" / "yolo26s_mass_seg_best.pt"
 YOLO_LIVER_PATH: Path = WEIGHTS_DIR / "liver_prompt" / "yolov8n_liver.pt"
+YOLO26_LIVER_PATH: Path = WEIGHTS_DIR / "liver_prompt" / "yolo26n_liver.pt"
 MULTIORGAN_SDK_PATH: Path = WEIGHTS_DIR / "multiorgan" / "multiorgan_best.pt"
 FIBROSIS_ENSEMBLE_PATH: Path = WEIGHTS_DIR / "fibrosis" / "fibrosis_ensemble.pt"
+STEATOSIS_WEIGHTS_PATH: Path = WEIGHTS_DIR / "steatosis" / "yolo26s_steatosis_cls_best.pt"
 ORGAN_WEIGHTS_PATH: Path = WEIGHTS_DIR / "organ_gate" / "organ_best.pt"
 ORGAN_LABELS_PATH: Path = WEIGHTS_DIR / "organ_gate" / "labels.json"
 ORGAN_METRICS_PATH: Path = WEIGHTS_DIR / "organ_gate" / "metrics_organ.json"
@@ -28,6 +32,7 @@ QUALITY_ENVELOPES_PATH: Path = BASE_DIR / "src" / "models" / "gate" / "quality_e
 
 # Data & Flywheel Paths
 DATA_DIR: Path = BASE_DIR / "data"
+PATIENT_SPLIT_PATH: Path = DATA_DIR / "patient_split.json"
 SAMPLES_DIR: Path = DATA_DIR.resolve()
 SAMPLE_EXTENSIONS: frozenset = frozenset({".jpg", ".jpeg", ".png", ".bmp"})
 FLYWHEEL_DIR: Path = DATA_DIR / "flywheel"

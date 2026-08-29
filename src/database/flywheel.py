@@ -75,7 +75,8 @@ def save_feedback(payload: Union[FeedbackRequest, Dict[str, Any]]) -> Dict[str, 
         if image_source and image_source.startswith("data:image"):
             try:
                 b64_data = image_source.split(",")[1]
-                safe_name = f"{timestamp_str}_{filename.replace('/', '_').replace('\\', '_')}"
+                clean_filename = filename.replace("/", "_").replace("\\", "_")
+                safe_name = f"{timestamp_str}_{clean_filename}"
                 img_path = FLYWHEEL_DIR / safe_name
                 with open(img_path, "wb") as f:
                     f.write(base64.b64decode(b64_data))

@@ -112,7 +112,9 @@ def train(yaml_path: Path, epochs: int = 35, batch_size: int = 32, imgsz: int = 
     print(f" Device:      {device}")
     print("=" * 65)
 
-    model = YOLO("yolov8n.pt")
+    pretrained_pt = BASE_DIR / "weights" / "pretrained" / "yolov8n.pt"
+    base_weights = str(pretrained_pt) if pretrained_pt.exists() else "yolov8n.pt"
+    model = YOLO(base_weights)
 
     results = model.train(
         data=str(yaml_path),

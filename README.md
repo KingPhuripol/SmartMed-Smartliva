@@ -90,33 +90,35 @@ SmartMed-Smartliva/
 │   └── vite.config.ts          # Vite build config
 │
 ├── src/                        # 🧠 Core Backend & AI Engines (Python Package)
-│   ├── api/                    # FastAPI Server endpoints
+│   ├── api/                    # FastAPI Server endpoints (server.py, copilot.py)
 │   ├── models/                 # Model architectures (Gate, MedSAM2, UNet, Fibrosis, Lesion)
 │   ├── workflow/               # Orchestrator, Gatekeeper, Specialists, Verifiers, Schemas
 │   ├── database/               # SQLite Flywheel Database manager (flywheel.py)
 │   └── config.py               # Central environment and path configuration
 │
 ├── weights/                    # ⚖️ Deep Learning Model Checkpoints (see weights/README.md)
-│   ├── organ_gate/             # ResNet-18 10-Class Gatekeeper
-│   ├── liver_prompt/           # YOLO Liver Bounding Box Prompter
-│   ├── medsam2/                # MedSAM2 ViT Checkpoints
-│   ├── multiorgan/             # UNet Multi-Organ Segmenter
-│   ├── fibrosis/               # 5-fold ResNet-18/ConvNeXt Fibrosis Ensemble
-│   └── lesion/                 # YOLOv8 Focal Lesion Detector
+│   ├── pretrained/             # Base weights (yolo26n, yolo26s, yolo26s-cls, yolo26s-seg, yolov8n)
+│   ├── organ_gate/             # ResNet-18 10-Class Gatekeeper (organ_best.pt, labels.json)
+│   ├── liver_prompt/           # YOLO Liver Bounding Box Prompter (yolo26n_liver.pt, yolov8n_liver.pt)
+│   ├── medsam2/                # MedSAM2 ViT Checkpoints (MedSAM2_latest.pt)
+│   ├── multiorgan/             # UNet Multi-Organ Segmenter (multiorgan_best.pt)
+│   ├── fibrosis/               # FibrosisNet Ensemble & YOLO26s-cls (fibrosis_ensemble.pt)
+│   ├── steatosis/              # YOLO26s-cls Steatosis Classifier (yolo26s_steatosis_cls_best.pt)
+│   ├── lesion/                 # Focal Lesion & Mass Instance Seg (yolov8_lesion, yolo26s_mass_seg)
+│   └── archive/                # Distribution weights zip packages (smartliva_weights.zip)
 │
-├── data/                       # 📁 Clinical Data & Flywheel DB
+├── data/                       # 📁 Clinical Data & Flywheel DB (see data/README.md)
 │   ├── flywheel/               # SQLite Flywheel database (flywheel.db)
+│   ├── patient_split.json      # Zero-leakage patient-level dataset splits
 │   └── README.md               # Data storage & PDPA clinical guidelines
 │
-├── public/                     # 🖼️ Sample clinical ultrasound cases & assets
-│   ├── samples/                # Real patient ultrasound cases
+├── public/                     # 🖼️ Sample clinical ultrasound cases & static assets
+│   ├── samples/                # Real patient ultrasound cases for testing & demo
 │   └── *.png                   # Brand logos and icons
 │
-└── tools/                      # 🧪 Testing, Benchmarking & Audit Tools
-    ├── eval_cases.py           # Real patient batch evaluation suite
-    ├── shadow_study_manager.py # Pilot Shadow Study & Flywheel Concordance Analyzer
-    ├── test_gatekeeper_harness.py # Non-Liver Hard-Gating Guardrail test suite
-    └── test_integration.py     # 14/14 Unified End-to-End Integration Tests
+├── reports/                    # 📄 Generated Clinical & IP Disclosure Reports (.docx, .json)
+├── outputs/                    # 📊 Evaluation & visualization outputs
+└── tools/                      # 🛠️ 32 Engineering & Evaluation Tools (see tools/README.md)
 ```
 
 ---

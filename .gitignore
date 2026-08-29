@@ -42,6 +42,7 @@ runs/
 # Patient Data & Local Databases — NEVER commit raw patient images or SQLite DB
 data/*
 !data/README.md
+!data/patient_split.json
 data/flywheel/*.jpg
 data/flywheel/*.png
 data/flywheel/*.db

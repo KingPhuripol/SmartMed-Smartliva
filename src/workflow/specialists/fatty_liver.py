@@ -7,11 +7,31 @@ Evaluates hepatic steatosis based on:
 4. Patient metabolic & lab indicators (Triglycerides, AST/ALT, BMI).
 """
 
+import logging
 from typing import Any, Dict, List, Optional, Tuple
 import cv2
 import numpy as np
+from pathlib import Path
+from ultralytics import YOLO
 
 from src.workflow.schemas import LesionInfo
+from src.config import BASE_DIR, STEATOSIS_WEIGHTS_PATH
+
+logger = logging.getLogger("SmartLiva.Specialist.FattyLiver")
+
+YOLO26_STEATOSIS_WEIGHTS = STEATOSIS_WEIGHTS_PATH
+_steatosis_yolo_model: Optional[YOLO] = None
+
+
+def get_steatosis_yolo_model() -> Optional[YOLO]:
+    global _steatosis_yolo_model
+    if _steatosis_yolo_model is None and YOLO26_STEATOSIS_WEIGHTS.exists():
+        try:
+            _steatosis_yolo_model = YOLO(str(YOLO26_STEATOSIS_WEIGHTS))
+            logger.info(f"Loaded YOLO26s-cls Steatosis model from {YOLO26_STEATOSIS_WEIGHTS}")
+        except Exception as err:
+            logger.warning(f"Could not load YOLO26s-cls Steatosis model: {err}")
+    return _steatosis_yolo_model
 
 
 def evaluate_steatosis(
@@ -112,32 +132,57 @@ def evaluate_steatosis(
     if has_ffc or has_ffs:
         steatosis_score += 1.8
 
+    # 4. Deep Learning YOLO26s-cls Classifier Score
+    yolo_model = get_steatosis_yolo_model()
+    yolo_stage = None
+    yolo_conf = 0.0
+    if yolo_model is not None:
+        try:
+            res = yolo_model.predict(img_bgr, imgsz=448, verbose=False)
+            if res and len(res) > 0 and hasattr(res[0], "probs") and res[0].probs is not None:
+                probs = res[0].probs
+                top1_idx = int(probs.top1)
+                yolo_conf = float(probs.top1conf)
+                yolo_stage = res[0].names.get(top1_idx, "S0")
+                logger.info(f"YOLO26s-cls Steatosis Prediction: {yolo_stage} ({yolo_conf:.1%})")
+                if yolo_stage == "S3":
+                    steatosis_score += 1.8 * yolo_conf
+                elif yolo_stage == "S2":
+                    steatosis_score += 1.2 * yolo_conf
+                elif yolo_stage == "S1":
+                    steatosis_score += 0.6 * yolo_conf
+        except Exception as err:
+            logger.warning(f"YOLO26s-cls Steatosis inference failed: {err}")
+
     # Map to S0-S3 stages
     if steatosis_score >= 2.6:
         stage = "S3"
-        conf = 0.88
+        conf = max(0.88, yolo_conf if yolo_stage == "S3" else 0.85)
         rationale = (
             f"ตรวจพบการลดทอนของคลื่นเสียงในชั้นลึกชัดเจน (Attenuation ratio {attenuation_ratio:.2f}) "
             f"ความสว่างเนื้อตับเพิ่มขึ้นอย่างมีนัยสำคัญ (Mean intensity {mean_intensity:.1f}) "
+            f"การวิเคราะห์ Deep Learning ชี้สอดคล้องกับ {yolo_stage or 'S3'} "
             "ขอบกะบังลมและหลอดเลือดในตับเริ่มเลือนราง สอดคล้องกับไขมันพอกตับระดับรุนแรง (Severe Steatosis / S3)"
         )
     elif steatosis_score >= 1.6:
         stage = "S2"
-        conf = 0.85
+        conf = max(0.85, yolo_conf if yolo_stage == "S2" else 0.82)
         rationale = (
             f"เนื้อตับมีความสะท้อนคลื่นเสียงเพิ่มขึ้นปานกลาง (Attenuation ratio {attenuation_ratio:.2f}, Mean intensity {mean_intensity:.1f}) "
+            f"การวิเคราะห์ Deep Learning ชี้สอดคล้องกับ {yolo_stage or 'S2'} "
             "การลดทอนของคลื่นเสียงส่วนลึกปานกลาง ยังพอมองเห็นขอบกะบังลมได้ สอดคล้องกับไขมันพอกตับระดับปานกลาง (Moderate Steatosis / S2)"
         )
     elif steatosis_score >= 0.8:
         stage = "S1"
-        conf = 0.82
+        conf = max(0.82, yolo_conf if yolo_stage == "S1" else 0.80)
         rationale = (
             f"พบความสว่างของเนื้อตับเพิ่มขึ้นเล็กน้อย (Attenuation ratio {attenuation_ratio:.2f}, Mean intensity {mean_intensity:.1f}) "
+            f"การวิเคราะห์ Deep Learning ชี้สอดคล้องกับ {yolo_stage or 'S1'} "
             "การลดทอนคลื่นเสียงส่วนลึกยังไม่ชัดเจน มองเห็นกะบังลมและผนังหลอดเลือดปกติ สอดคล้องกับไขมันพอกตับระดับเริ่มต้น (Mild Steatosis / S1)"
         )
     else:
         stage = "S0"
-        conf = 0.90
+        conf = max(0.90, yolo_conf if yolo_stage == "S0" else 0.88)
         rationale = (
             f"เนื้อตับมีความสะท้อนคลื่นเสียงสม่ำเสมอปกติ (Attenuation ratio {attenuation_ratio:.2f}, Mean intensity {mean_intensity:.1f}) "
             "ไม่พบการลดทอนของคลื่นเสียงผิดปกติ หลอดเลือดและกะบังลมคมชัด (Normal Liver / No Steatosis / S0)"

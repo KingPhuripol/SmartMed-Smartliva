@@ -6,7 +6,9 @@ YAML_PATH = BASE_DIR / "data" / "yolo_liver_dataset" / "dataset.yaml"
 
 def main():
     # Load a model
-    model = YOLO("yolov8n.pt")  # load a pretrained model (recommended for training)
+    pretrained_pt = BASE_DIR / "weights" / "pretrained" / "yolov8n.pt"
+    base_weights = str(pretrained_pt) if pretrained_pt.exists() else "yolov8n.pt"
+    model = YOLO(base_weights)  # load a pretrained model
 
     # Train the model
     results = model.train(
