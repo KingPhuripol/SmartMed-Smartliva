@@ -7,7 +7,12 @@ import numpy as np
 
 from src.workflow.schemas import AnalyzeRequest, PredictionImages, PredictionResponse
 from src.workflow.gatekeeper import GatekeeperVerdict
-from src.workflow.agents import analyze_image_quality, validate_clinical_data, detect_view
+from src.workflow.agents import (
+    analyze_image_quality,
+    compute_clinical_biomarkers,
+    detect_view,
+    validate_clinical_data,
+)
 from src.workflow.specialists import (
     run_lesion_block,
     run_fibrosis_block,
@@ -123,6 +128,9 @@ async def run_clinical_workflow(
         quality_task, validation_task, view_task
     )
 
+    # Compute Clinical Biomarkers (FIB-4 Index & APRI Score)
+    biomarkers_info = compute_clinical_biomarkers(request.history, request.lab)
+
     # ---------------------------------------------------------
     # STEP 2: Specialist Blocks (Parallel - Only for verified liver)
     # ---------------------------------------------------------
@@ -150,7 +158,7 @@ async def run_clinical_workflow(
     )
     te_data_task = asyncio.create_task(run_te_data_block(request.te))
     fluke_risk_task = asyncio.create_task(
-        run_fluke_risk_block(request.history, img_bgr=img_bgr, gray_img=gray_img, mask=mask)
+        run_fluke_risk_block(request.history, img_bgr=img_bgr, gray_img=gray_img, mask=mask, lab=request.lab)
     )
 
     lesions_list, has_low_confidence = await lesion_task
@@ -196,6 +204,9 @@ async def run_clinical_workflow(
         fatty_liver_stage=fatty_liver_stage,
         te_data_processed=te_data_processed,
         fluke_risk=fluke_risk_info,
+        biomarkers=biomarkers_info,
+        patient_history=request.history,
+        lab_data=request.lab,
         low_confidence_warning=has_low_confidence,
         images=PredictionImages(
             original=orig_b64,

@@ -17,19 +17,20 @@ def evaluate_fluke_findings(
     img_bgr: Optional[np.ndarray] = None,
     gray_img: Optional[np.ndarray] = None,
     mask: Optional[np.ndarray] = None,
+    lab: Optional[Any] = None,
 ) -> Dict[str, Any]:
     """Assess liver fluke findings, return verdict ('Negative'|'Possible'|'Probable'), regions, and rationale."""
     risk_score = 0.10
     factors: List[str] = []
-    has_fish_history = False
 
     def _get_val(obj: Any, key: str, default: Any = False) -> Any:
+        if obj is None:
+            return default
         if isinstance(obj, dict):
             return obj.get(key, default)
         return getattr(obj, key, default)
 
     if history and _get_val(history, "raw_fish_consumption", False):
-        has_fish_history = True
         risk_score += 0.55
         factors.append("ประวัติรับประทานปลาน้ำจืดดิบ/สุกๆ ดิบๆ (Raw fish consumption)")
 
@@ -41,8 +42,25 @@ def evaluate_fluke_findings(
         risk_score += 0.15
         factors.append("ประวัติมะเร็งท่อน้ำดีในครอบครัว (Family history of CCA)")
 
+    if history and _get_val(history, "endemic_area", False):
+        risk_score += 0.10
+        factors.append("อาศัยในพื้นที่ระบาดพยาธิใบไม้ตับ (Endemic area)")
+
+    # Lab Biliary & Tumor Markers Check
+    if lab:
+        alp_val = _get_val(lab, "alp", None)
+        if alp_val is not None and alp_val > 120:
+            risk_score += 0.15
+            factors.append(f"เอนไซม์ท่อน้ำดีสูง (ALP = {alp_val:.0f} U/L > 120 U/L)")
+
+        ca19_val = _get_val(lab, "ca19_9", None)
+        if ca19_val is not None and ca19_val > 37:
+            risk_score += 0.20
+            factors.append(f"สารบ่งชี้มะเร็งท่อน้ำดีสูง (CA 19-9 = {ca19_val:.1f} U/mL > 37 U/mL)")
+
+    risk_score = min(1.0, risk_score)
+
     # Ultrasound Image Periportal Analysis if image provided
-    periportal_prominence = False
     regions: List[Dict[str, Any]] = []
 
     if gray_img is not None and mask is not None:
@@ -70,8 +88,9 @@ def evaluate_fluke_findings(
         verdict = "Probable"
         conf = 0.88
         rationale = (
-            f"ผู้ป่วยมีความเสี่ยงสูงต่อการติดเชื้อพยาธิใบไม้ตับ ({', '.join(factors)}) "
-            "โครงสร้างท่อน้ำดีในตับควรได้รับการตรวจติดตามต่อเนื่องหรือตรวจหารังไข่พยาธิในอุจจาระ / ตรวจเอนไซม์ตับ"
+            f"ผู้ป่วยมีความเสี่ยงสูงต่อการติดเชื้อพยาธิใบไม้ตับหรือโรคท่อน้ำดี ({', '.join(factors)}) "
+            "โครงสร้างท่อน้ำดีในตับควรได้รับการตรวจติดตามต่อเนื่อง ตรวจหารังไข่พยาธิในอุจจาระ (Stool exam for OV eggs) "
+            "และตรวจระดับเอนไซม์ตับ/อัลตราซาวด์ซ้ำทุก 6 เดือน"
         )
     elif risk_score >= 0.35:
         verdict = "Possible"
@@ -107,9 +126,10 @@ async def run_fluke_risk_block(
     img_bgr: Optional[np.ndarray] = None,
     gray_img: Optional[np.ndarray] = None,
     mask: Optional[np.ndarray] = None,
+    lab: Optional[Any] = None,
 ) -> FlukeRiskInfo:
-    """Assess liver fluke risk based on history & ultrasound features."""
-    res = evaluate_fluke_findings(history, img_bgr, gray_img, mask)
+    """Assess liver fluke risk based on history, lab & ultrasound features."""
+    res = evaluate_fluke_findings(history, img_bgr, gray_img, mask, lab=lab)
     risk_level = "High" if res["verdict"] == "Probable" else ("Moderate" if res["verdict"] == "Possible" else "Low")
 
     return FlukeRiskInfo(

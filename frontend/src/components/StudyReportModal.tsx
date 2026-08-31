@@ -147,12 +147,40 @@ export function StudyReportModal({ study, review, onClose }: StudyReportModalPro
         </header>
 
         {/* ------------------------------------------------- 1 · identifiers */}
-        <Section no={1} title="ข้อมูลการตรวจ">
+        <Section no={1} title="ข้อมูลผู้ป่วยและการตรวจ (Patient & Clinical Data)">
           <div className="grid gap-x-8 sm:grid-cols-2">
             <Field label="ไฟล์ภาพ" value={study.intake.fileName} />
             <Field label="ความละเอียด" value={<span className="tnum">{study.intake.width}×{study.intake.height} px</span>} />
             <Field label="รับภาพเมื่อ" value={<span className="tnum">{new Date(study.intake.receivedAt).toLocaleString('th-TH')}</span>} />
             <Field label="คัดกรอง" value={study.triage?.classification === 'abnormal' ? 'ผิดปกติ' : 'ปกติ'} />
+            {study.intake.clinical?.history?.age && (
+              <Field
+                label="อายุ / เพศ"
+                value={`${study.intake.clinical.history.age} ปี ${study.intake.clinical.history.gender === 'M' ? '(ชาย)' : study.intake.clinical.history.gender === 'F' ? '(หญิง)' : ''}`}
+              />
+            )}
+            {study.intake.clinical?.biomarkers?.fib4_score && (
+              <Field
+                label="FIB-4 Index"
+                value={
+                  <span className="font-bold">
+                    {study.intake.clinical.biomarkers.fib4_score} ({study.intake.clinical.biomarkers.fib4_risk_tier || 'ประเมินแล้ว'})
+                  </span>
+                }
+              />
+            )}
+            {study.intake.clinical?.lab?.ast && (
+              <Field
+                label="ผลเลือด (AST/ALT/PLT)"
+                value={`${study.intake.clinical.lab.ast || '-'} / ${study.intake.clinical.lab.alt || '-'} U/L (PLT: ${study.intake.clinical.lab.platelets || '-'})`}
+              />
+            )}
+            {(study.intake.clinical?.lab?.alp || study.intake.clinical?.lab?.ca19_9 || study.intake.clinical?.lab?.afp) && (
+              <Field
+                label="สารบ่งชี้ / ท่อน้ำดี"
+                value={`ALP: ${study.intake.clinical.lab.alp || '-'} U/L, CA19-9: ${study.intake.clinical.lab.ca19_9 || '-'} U/mL, AFP: ${study.intake.clinical.lab.afp || '-'} ng/mL`}
+              />
+            )}
           </div>
         </Section>
 

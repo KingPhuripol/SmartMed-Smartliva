@@ -494,6 +494,7 @@ async def agent_steatosis_endpoint(
 async def agent_fluke_endpoint(
     file: UploadFile = File(...),
     history_json: Optional[str] = Form(None),
+    lab_json: Optional[str] = Form(None),
 ) -> JSONResponse:
     """Execute real Liver Fluke / CCA Risk Assessment Agent with Gatekeeper check."""
     t0 = time.perf_counter()
@@ -515,11 +516,19 @@ async def agent_fluke_endpoint(
         except Exception:
             pass
 
+    lab = None
+    if lab_json:
+        try:
+            lab = json.loads(lab_json)
+        except Exception:
+            pass
+
     result = evaluate_fluke_findings(
         history=history,
         img_bgr=bgr_img,
         gray_img=gray_img,
         mask=mask,
+        lab=lab,
     )
     inference_ms = int(round((time.perf_counter() - t0) * 1000.0))
 

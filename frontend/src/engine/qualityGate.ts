@@ -111,7 +111,11 @@ export function runQualityGate(
   }
 }
 
-export function createIntake(file: File, decoded: DecodedImage): ImageIntake {
+export function createIntake(
+  file: File,
+  decoded: DecodedImage,
+  clinical?: import('../domain').ClinicalData | null,
+): ImageIntake {
   return {
     imageId: `img-${Date.now()}-${Math.random().toString(36).slice(2, 7)}`,
     fileName: file.name,
@@ -121,6 +125,7 @@ export function createIntake(file: File, decoded: DecodedImage): ImageIntake {
     height: decoded.height,
     source: decoded.objectUrl,
     receivedAt: new Date().toISOString(),
+    clinical: clinical || null,
   }
 }
 
@@ -130,6 +135,7 @@ export function createSyntheticIntake(
   width: number,
   height: number,
   byteSize: number,
+  clinical?: import('../domain').ClinicalData | null,
 ): ImageIntake {
   return {
     imageId: `img-synth-${Date.now()}`,
@@ -140,5 +146,6 @@ export function createSyntheticIntake(
     height,
     source: dataUrl,
     receivedAt: new Date().toISOString(),
+    clinical: clinical || null,
   }
 }

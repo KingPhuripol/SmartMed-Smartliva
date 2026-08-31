@@ -52,10 +52,18 @@ def generate_structured_clinical_fallback(response: PredictionResponse) -> str:
         "ข้อสรุปความเห็นแพทย์ (Clinical Impression & Plan):",
         f"• ภาพรวมการตรวจ: คุณภาพของภาพอัลตราซาวด์อยู่ในเกณฑ์ตรวจวิเคราะห์ได้ ขอบเขตตับครอบคลุม {response.liver_area_percent:.1f}% ของเฟรม",
         f"• พังผืดในตับ (Fibrosis): ระดับ {f_stage} (ประเมินความแข็ง ~{f_kpa} kPa, ความเสี่ยง: {f_risk})",
+    ]
+
+    if response.biomarkers and response.biomarkers.calculated and response.biomarkers.fib4_score is not None:
+        lines.append(
+            f"• คะแนนทางชีวเคมี (FIB-4 Index): {response.biomarkers.fib4_score:.2f} ({response.biomarkers.fib4_risk_tier})"
+        )
+
+    lines.extend([
         f"• ไขมันพอกตับ (Steatosis): {stea_desc}",
         f"• รอยโรคเฉพาะที่ (Focal Lesions): {lesion_text}",
         f"• ความเสี่ยงพยาธิใบไม้ตับ/มะเร็งท่อน้ำดี (CCA Risk): ระดับ {fluke_risk}",
-    ]
+    ])
 
     if has_malignancy:
         lines.append(

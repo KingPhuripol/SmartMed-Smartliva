@@ -11,6 +11,12 @@ class LabData(BaseModel):
     alt: Optional[float] = Field(None, description="Alanine Aminotransferase (U/L)")
     platelets: Optional[float] = Field(None, description="Platelet count (10^9/L)")
     bilirubin: Optional[float] = Field(None, description="Total Bilirubin (mg/dL)")
+    alp: Optional[float] = Field(None, description="Alkaline Phosphatase (U/L) - Biliary/CCA marker")
+    ggt: Optional[float] = Field(None, description="Gamma-Glutamyl Transferase (U/L)")
+    afp: Optional[float] = Field(None, description="Alpha-Fetoprotein (ng/mL) - HCC marker")
+    ca19_9: Optional[float] = Field(None, description="Cancer Antigen 19-9 (U/mL) - CCA marker")
+    fbs: Optional[float] = Field(None, description="Fasting Blood Sugar (mg/dL)")
+    hba1c: Optional[float] = Field(None, description="Hemoglobin A1c (%)")
 
 
 class TEData(BaseModel):
@@ -25,6 +31,23 @@ class PatientHistory(BaseModel):
     hcv_positive: Optional[bool] = Field(None, description="Hepatitis C positive")
     alcohol_history: Optional[bool] = Field(None, description="Significant alcohol consumption history")
     raw_fish_consumption: Optional[bool] = Field(None, description="History of raw fish consumption (Fluke risk factor)")
+    fluke_infection_history: Optional[bool] = Field(None, description="Previous liver fluke infection/treatment history")
+    family_cancer_history: Optional[bool] = Field(None, description="Family history of CCA or liver malignancy")
+    endemic_area: Optional[bool] = Field(None, description="Residence in liver fluke endemic region (e.g., Northeast/North Thailand)")
+    diabetes: Optional[bool] = Field(None, description="Diabetes mellitus history")
+    dyslipidemia: Optional[bool] = Field(None, description="Dyslipidemia history")
+    weight_kg: Optional[float] = Field(None, description="Body weight in kg")
+    height_cm: Optional[float] = Field(None, description="Body height in cm")
+    bmi: Optional[float] = Field(None, description="Calculated Body Mass Index")
+
+
+class BiomarkersInfo(BaseModel):
+    fib4_score: Optional[float] = Field(None, description="Calculated FIB-4 Index score")
+    fib4_risk_tier: Optional[str] = Field(None, description="FIB-4 Risk tier: Low Risk, Indeterminate, High Risk")
+    fib4_interpretation: Optional[str] = Field(None, description="Clinical interpretation of FIB-4 score")
+    apri_score: Optional[float] = Field(None, description="Calculated APRI score")
+    apri_risk_tier: Optional[str] = Field(None, description="APRI Risk tier: Low Risk, Significant Fibrosis, Cirrhosis")
+    calculated: bool = Field(False, description="Whether FIB-4/APRI biomarkers were computed")
 
 
 class AnalyzeRequest(BaseModel):
@@ -134,6 +157,9 @@ class PredictionResponse(BaseModel):
     fatty_liver_stage: Optional[str] = Field("S0", description="Fatty Liver S-Stage (S0-S3)")
     te_data_processed: Optional[Dict[str, Any]] = None
     fluke_risk: Optional[FlukeRiskInfo] = None
+    biomarkers: Optional[BiomarkersInfo] = None
+    patient_history: Optional[PatientHistory] = None
+    lab_data: Optional[LabData] = None
 
     # Reviewer Output
     clinical_report: Optional[str] = None

@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import type {
   AgentId,
+  ClinicalData,
   PhysicianReview,
   PipelineProgress,
   Region,
@@ -29,6 +30,7 @@ import { ReviewConsole } from './components/review/ReviewConsole'
 import { StudyReportModal } from './components/StudyReportModal'
 import { FeedbackModal } from './components/FeedbackModal'
 import { HistoryModal, type EHRRecord } from './components/HistoryModal'
+import { PatientIntakeModal } from './components/PatientIntakeModal'
 import { Toast } from './components/ui/Toast'
 
 type Phase = 'upload' | 'running' | 'reject' | 'review'
@@ -70,6 +72,9 @@ export default function App() {
   const [focusedAgentId, setFocusedAgentId] = useState<AgentId | null>(null)
   const [markTool, setMarkTool] = useState<AnnotationTool>('none')
   const [markingFor, setMarkingFor] = useState<AgentId | null>(null)
+
+  const [clinicalData, setClinicalData] = useState<ClinicalData | null>(null)
+  const [clinicalModalOpen, setClinicalModalOpen] = useState(false)
 
   const [reportOpen, setReportOpen] = useState(false)
   const [feedbackOpen, setFeedbackOpen] = useState(false)
@@ -156,13 +161,13 @@ export default function App() {
         releaseObjectUrl()
         const decoded = await decodeImage(file)
         objectUrlRef.current = decoded.objectUrl
-        await runPipeline(createIntake(file, decoded))
+        await runPipeline(createIntake(file, decoded, clinicalData))
       } catch {
         setUploadError('ไม่สามารถอ่านไฟล์ภาพนี้ได้ ไฟล์อาจเสียหายหรือไม่ใช่ไฟล์ภาพ')
         setPhase('upload')
       }
     },
-    [releaseObjectUrl, runPipeline],
+    [clinicalData, releaseObjectUrl, runPipeline],
   )
 
   const handleSample = useCallback(async () => {
@@ -177,9 +182,10 @@ export default function App() {
         DEMO_WIDTH,
         DEMO_HEIGHT,
         byteSize,
+        clinicalData,
       ),
     )
-  }, [releaseObjectUrl, runPipeline])
+  }, [clinicalData, releaseObjectUrl, runPipeline])
 
   const handleSelectBenchmarkCase = useCallback(
     async (c: ClinicalBenchmarkCase) => {
@@ -192,12 +198,12 @@ export default function App() {
         const file = new File([blob], `${c.id}.jpg`, { type: 'image/jpeg' })
         const decoded = await decodeImage(file)
         objectUrlRef.current = decoded.objectUrl
-        await runPipeline(createIntake(file, decoded))
+        await runPipeline(createIntake(file, decoded, clinicalData))
       } catch {
         await handleSample()
       }
     },
-    [handleSample, releaseObjectUrl, runPipeline],
+    [clinicalData, handleSample, releaseObjectUrl, runPipeline],
   )
 
   const handleReset = useCallback(() => {
@@ -247,9 +253,11 @@ export default function App() {
       records.unshift(newRecord)
       localStorage.setItem('smartliva_ehr_records', JSON.stringify(records))
       setHistoryCount(records.length)
+      setSubmitted(true)
       setToast(`บันทึกผลเข้าเวชระเบียน ${study.studyId} เรียบร้อยแล้ว`)
     } catch (e) {
       console.error('Error saving EHR:', e)
+      setToast('เกิดข้อผิดพลาดในการบันทึกข้อมูล')
     }
   }, [study, review])
 
@@ -284,7 +292,7 @@ export default function App() {
             [agentId]: {
               agentId,
               verdict: 'incorrect',
-              correctedValue,
+              correctedValue: correctedValue as any,
               reason,
               reviewedAt: new Date().toISOString(),
             },
@@ -307,7 +315,12 @@ export default function App() {
       return {
         ...prev,
         annotations: [...prev.annotations, region],
-        events: appendEvent(prev, 'annotation_added', `เพิ่ม ${region.label}`),
+        events: appendEvent(
+          prev,
+          'annotation_added',
+          `Added ${region.shape} annotation`,
+          region.linkedAgentId,
+        ),
       }
     })
   }, [])
@@ -318,7 +331,7 @@ export default function App() {
       return {
         ...prev,
         annotations: prev.annotations.filter((r) => r.regionId !== regionId),
-        events: appendEvent(prev, 'annotation_removed', `ลบเครื่องหมาย ${regionId}`),
+        events: appendEvent(prev, 'annotation_removed', `Removed annotation ${regionId}`),
       }
     })
   }, [])
@@ -374,6 +387,8 @@ export default function App() {
               onUseSample={handleSample}
               onSelectBenchmarkCase={handleSelectBenchmarkCase}
               externalError={uploadError}
+              clinicalData={clinicalData}
+              onOpenClinicalModal={() => setClinicalModalOpen(true)}
             />
           )}
 
@@ -446,6 +461,16 @@ export default function App() {
           }}
         />
       )}
+
+      <PatientIntakeModal
+        isOpen={clinicalModalOpen}
+        onClose={() => setClinicalModalOpen(false)}
+        initialData={clinicalData}
+        onSave={(data) => {
+          setClinicalData(data)
+          setToast('บันทึกข้อมูลทางคลินิกและผลแล็บแล้ว')
+        }}
+      />
 
       <HistoryModal
         open={historyOpen}

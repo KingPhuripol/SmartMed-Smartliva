@@ -142,6 +142,66 @@ export function ReviewConsole({
           </>
         ) : (
           <>
+            {study.intake.clinical && (
+              <div className="panel overflow-hidden rounded-xl border border-emerald-200/60 bg-emerald-50/30 p-3.5">
+                <div className="flex items-center justify-between border-b border-emerald-200/50 pb-2 mb-2">
+                  <span className="text-[11px] font-bold text-ink flex items-center gap-1.5">
+                    <span>📋</span> ข้อมูลผู้ป่วย & ผลแล็บ (Patient & Labs)
+                  </span>
+                  {study.intake.clinical.biomarkers?.fib4_score && (
+                    <span className="rounded-md bg-emerald-100 text-emerald-800 text-[10.5px] font-bold px-2 py-0.5 border border-emerald-300">
+                      FIB-4: {study.intake.clinical.biomarkers.fib4_score}
+                    </span>
+                  )}
+                </div>
+                <div className="grid grid-cols-2 gap-2 text-[11.5px] text-ink">
+                  <div>
+                    <span className="text-ink-muted">อายุ/เพศ: </span>
+                    <span className="font-semibold">
+                      {study.intake.clinical.history?.age ? `${study.intake.clinical.history.age} ปี ` : '- '}
+                      {study.intake.clinical.history?.gender === 'M' ? '(ชาย)' : study.intake.clinical.history?.gender === 'F' ? '(หญิง)' : ''}
+                    </span>
+                  </div>
+                  <div>
+                    <span className="text-ink-muted">กินปลาดิบ: </span>
+                    <span className={`font-semibold ${study.intake.clinical.history?.raw_fish_consumption ? 'text-red-600' : ''}`}>
+                      {study.intake.clinical.history?.raw_fish_consumption ? 'มีประวัติ ⚠️' : 'ไม่มี'}
+                    </span>
+                  </div>
+                  {(study.intake.clinical.lab?.ast || study.intake.clinical.lab?.alt) && (
+                    <div>
+                      <span className="text-ink-muted">AST / ALT: </span>
+                      <span className="font-semibold">{study.intake.clinical.lab.ast || '-'} / {study.intake.clinical.lab.alt || '-'} U/L</span>
+                    </div>
+                  )}
+                  {study.intake.clinical.lab?.alp && (
+                    <div>
+                      <span className="text-ink-muted">ALP (ท่อน้ำดี): </span>
+                      <span className={`font-semibold ${study.intake.clinical.lab.alp > 120 ? 'text-amber-600' : ''}`}>
+                        {study.intake.clinical.lab.alp} U/L
+                      </span>
+                    </div>
+                  )}
+                  {study.intake.clinical.lab?.afp && (
+                    <div>
+                      <span className="text-ink-muted">AFP (มะเร็งตับ): </span>
+                      <span className={`font-semibold ${study.intake.clinical.lab.afp > 20 ? 'text-red-600' : ''}`}>
+                        {study.intake.clinical.lab.afp} ng/mL
+                      </span>
+                    </div>
+                  )}
+                  {study.intake.clinical.lab?.ca19_9 && (
+                    <div>
+                      <span className="text-ink-muted">CA 19-9 (CCA): </span>
+                      <span className={`font-semibold ${study.intake.clinical.lab.ca19_9 > 37 ? 'text-red-600' : ''}`}>
+                        {study.intake.clinical.lab.ca19_9} U/mL
+                      </span>
+                    </div>
+                  )}
+                </div>
+              </div>
+            )}
+
             <div className="panel overflow-hidden rounded-xl">
               <p className="border-line text-ink-muted border-b px-4 py-2.5 text-[10px] font-medium tracking-[0.14em] uppercase">
                 สิ่งที่ AI วิเคราะห์ได้ ({assessed.length})

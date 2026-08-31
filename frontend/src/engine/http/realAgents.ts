@@ -32,6 +32,9 @@ export function createHttpFibrosisRunner(
         const blob = await getBlob(input, signal)
         const form = new FormData()
         form.append('file', blob, input.intake.fileName)
+        if (input.intake.clinical?.view) {
+          form.append('view', input.intake.clinical.view)
+        }
 
         const res = await fetch(`${cfg.baseUrl}/api/v1/agents/fibrosis`, {
           method: 'POST',
@@ -159,6 +162,12 @@ export function createHttpFlukeRunner(
         const blob = await getBlob(input, signal)
         const form = new FormData()
         form.append('file', blob, input.intake.fileName)
+        if (input.intake.clinical?.history) {
+          form.append('history_json', JSON.stringify(input.intake.clinical.history))
+        }
+        if (input.intake.clinical?.lab) {
+          form.append('lab_json', JSON.stringify(input.intake.clinical.lab))
+        }
 
         const res = await fetch(`${cfg.baseUrl}/api/v1/agents/fluke`, {
           method: 'POST',

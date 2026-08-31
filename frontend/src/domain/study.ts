@@ -9,6 +9,60 @@
 /** Bump when a stored record's shape changes; never reuse a version number. */
 export const SCHEMA_VERSION = '2.0.0'
 
+/* ----------------------------------------------------------- clinical data */
+
+export interface PatientHistory {
+  age?: number
+  gender?: 'M' | 'F'
+  hbv_positive?: boolean
+  hcv_positive?: boolean
+  alcohol_history?: boolean
+  raw_fish_consumption?: boolean
+  fluke_infection_history?: boolean
+  family_cancer_history?: boolean
+  endemic_area?: boolean
+  diabetes?: boolean
+  dyslipidemia?: boolean
+  weight_kg?: number
+  height_cm?: number
+  bmi?: number
+}
+
+export interface LabData {
+  ast?: number
+  alt?: number
+  platelets?: number
+  bilirubin?: number
+  alp?: number
+  ggt?: number
+  afp?: number
+  ca19_9?: number
+  fbs?: number
+  hba1c?: number
+}
+
+export interface TEData {
+  stiffness_kpa?: number
+  cap_db_m?: number
+}
+
+export interface BiomarkersInfo {
+  fib4_score?: number
+  fib4_risk_tier?: string
+  fib4_interpretation?: string
+  apri_score?: number
+  apri_risk_tier?: string
+  calculated?: boolean
+}
+
+export interface ClinicalData {
+  view?: string
+  history?: PatientHistory
+  lab?: LabData
+  te?: TEData
+  biomarkers?: BiomarkersInfo
+}
+
 /* ------------------------------------------------------------------ intake */
 
 export interface ImageIntake {
@@ -25,6 +79,8 @@ export interface ImageIntake {
    */
   source: string
   receivedAt: string
+  /** Patient clinical history, blood labs and biomarkers if provided */
+  clinical?: ClinicalData | null
 }
 
 /* ----------------------------------------------------------- quality gate */

@@ -34,16 +34,34 @@ async def run_deterministic_rule_engine(response: PredictionResponse) -> Predict
             f"🚨 ข้อควรระวังสูงสุด: ตรวจพบรอยโรคต้องสงสัย {target_name} แนะนำส่งตรวจยืนยันด้วย CT Triphasic Liver Protocol หรือ MRI Liver และตรวจระดับซีรั่ม AFP/CA19-9 ด่วน"
         )
         # Elevate fibrosis risk tier and stage to High Risk / F4 if primary hepatic malignancy (HCC) confirmed
-        if response.fibrosis:
+        if response.fibrosis and has_hcc:
             if response.fibrosis.risk_tier < 2 or response.fibrosis.stage in ["F0", "F1", "F2"]:
                 response.fibrosis.risk_tier = 2
                 response.fibrosis.risk_tier_label = "สูง (Cirrhotic Background Risk)"
                 response.fibrosis.stage = "F4"
+                response.fibrosis.stage_index = 4
                 response.fibrosis.stage_calibrated = "F4"
                 response.fibrosis.kpa_estimate = max(response.fibrosis.kpa_estimate, 9.5)
                 response.fibrosis.prob_f4 = max(response.fibrosis.prob_f4, 0.65)
 
-    # 3. Severe Steatosis Deep Acoustic Attenuation Note
+    # 3. Biomarkers (FIB-4 / APRI) Concordance Rule
+    if response.biomarkers and response.biomarkers.calculated and response.biomarkers.fib4_score is not None:
+        fib4 = response.biomarkers.fib4_score
+        if fib4 > 2.67 and response.fibrosis and response.fibrosis.stage in ["F0", "F1"]:
+            warnings.append(
+                f"⚠️ ค่าคะแนนชีวเคมี FIB-4 Index อยู่ในระดับเสี่ยงสูง ({fib4:.2f} > 2.67) ซึ่งขัดแย้งกับ AI Ultrasound (ระดับ {response.fibrosis.stage}) แนะนำส่งตรวจ FibroScan ยืนยัน"
+            )
+
+    # 4. Lab Markers Alert
+    if response.lab_data:
+        if response.lab_data.afp is not None and response.lab_data.afp > 20:
+            warnings.append(f"ตรวจพบค่าสารบ่งชี้มะเร็งตับสูงผิดปกติ (AFP = {response.lab_data.afp:.1f} ng/mL > 20 ng/mL)")
+        if response.lab_data.ca19_9 is not None and response.lab_data.ca19_9 > 37:
+            warnings.append(f"ตรวจพบค่าสารบ่งชี้มะเร็งท่อน้ำดีสูงผิดปกติ (CA 19-9 = {response.lab_data.ca19_9:.1f} U/mL > 37 U/mL)")
+        if response.lab_data.alp is not None and response.lab_data.alp > 120:
+            warnings.append(f"ตรวจพบเอนไซม์ท่อน้ำดีสูง (ALP = {response.lab_data.alp:.0f} U/L > 120 U/L)")
+
+    # 5. Severe Steatosis Deep Acoustic Attenuation Note
     if response.fatty_liver_stage == "S3":
         warnings.append("การลดทอนของคลื่นเสียงระดับ S3 อาจบดบังรายละเอียดเนื้อตับส่วนลึกและกะบังลม แนะนำติดตามด้วย CAP/FibroScan")
 

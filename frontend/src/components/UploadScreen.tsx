@@ -2,12 +2,15 @@ import { useCallback, useRef, useState } from 'react'
 import { QUALITY_CRITERIA } from '../config/quality'
 import { SparkIcon, UploadIcon } from './ui/Icons'
 import { CLINICAL_BENCHMARK_CASES, type ClinicalBenchmarkCase } from '../lib/clinicalCases'
+import type { ClinicalData } from '../domain'
 
 interface UploadScreenProps {
   onSelectFile: (file: File) => void
   onUseSample: () => void
   onSelectBenchmarkCase?: (c: ClinicalBenchmarkCase) => void
   externalError?: string | null
+  clinicalData?: ClinicalData | null
+  onOpenClinicalModal?: () => void
 }
 
 const PIPELINE_SUMMARY = [
@@ -33,6 +36,8 @@ export function UploadScreen({
   onUseSample,
   onSelectBenchmarkCase,
   externalError,
+  clinicalData,
+  onOpenClinicalModal,
 }: UploadScreenProps) {
   const inputRef = useRef<HTMLInputElement>(null)
   const [dragging, setDragging] = useState(false)
@@ -44,11 +49,24 @@ export function UploadScreen({
     [onSelectFile],
   )
 
+  const hasClinicalData = Boolean(
+    clinicalData &&
+      (clinicalData.history?.age ||
+        clinicalData.history?.raw_fish_consumption ||
+        clinicalData.history?.fluke_infection_history ||
+        clinicalData.history?.hbv_positive ||
+        clinicalData.lab?.ast ||
+        clinicalData.lab?.alt ||
+        clinicalData.lab?.alp ||
+        clinicalData.lab?.ca19_9 ||
+        clinicalData.te?.stiffness_kpa)
+  )
+
   return (
     <div className="relative flex flex-1 flex-col items-center justify-start overflow-y-auto px-4 py-6 sm:px-6 sm:py-8">
       <div className="animate-rise relative w-full max-w-[840px] flex flex-col items-center">
         {/* Header Branding */}
-        <div className="mb-6 flex flex-col items-center text-center">
+        <div className="mb-5 flex flex-col items-center text-center">
           <div className="mb-3 flex h-16 w-16 items-center justify-center rounded-2xl bg-emerald-50 border border-emerald-100 shadow-sm">
             <img
               src="/smartliva-mark.png"
@@ -71,6 +89,57 @@ export function UploadScreen({
             ⚠️ {externalError}
           </div>
         )}
+
+        {/* Clinical Intake Quick Status Bar */}
+        <div className="mb-4 w-full rounded-2xl border border-line bg-card p-4 shadow-sm flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+          <div className="flex items-center gap-3">
+            <div className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border ${
+              hasClinicalData
+                ? 'bg-emerald-50 text-medical border-emerald-200'
+                : 'bg-sunken text-ink-muted border-line'
+            }`}>
+              <span className="text-lg">{hasClinicalData ? '✓' : '📋'}</span>
+            </div>
+            <div>
+              <div className="flex items-center gap-2">
+                <p className="text-sm font-bold text-ink">ข้อมูลประวัติผู้ป่วย & ผลแล็บ (Clinical Data Intake)</p>
+                {hasClinicalData ? (
+                  <span className="rounded-full bg-emerald-100 text-emerald-800 text-[10.5px] font-bold px-2 py-0.5 border border-emerald-300">
+                    บันทึกแล้ว
+                  </span>
+                ) : (
+                  <span className="rounded-full bg-sunken text-ink-muted text-[10.5px] font-medium px-2 py-0.5 border border-line">
+                    ทางเลือก (Optional)
+                  </span>
+                )}
+              </div>
+              <p className="text-xs text-ink-muted mt-0.5">
+                {hasClinicalData ? (
+                  <span>
+                    {clinicalData?.history?.age ? `อายุ ${clinicalData.history.age} ปี ` : ''}
+                    {clinicalData?.history?.raw_fish_consumption ? '· ประวัติกินปลาดิบ ' : ''}
+                    {clinicalData?.history?.fluke_infection_history ? '· เคยรักษาพยาธิ ' : ''}
+                    {clinicalData?.lab?.ast ? `· AST: ${clinicalData.lab.ast} ` : ''}
+                    {clinicalData?.biomarkers?.fib4_score ? `· FIB-4: ${clinicalData.biomarkers.fib4_score} ` : ''}
+                  </span>
+                ) : (
+                  'กรอกประวัติกินปลาดิบ, ไวรัสตับอักเสบ, ผลเลือด AST/ALT/ALP เพื่อคำนวณ FIB-4 Index ร่วมกับการตรวจ'
+                )}
+              </p>
+            </div>
+          </div>
+          <button
+            type="button"
+            onClick={onOpenClinicalModal}
+            className={`shrink-0 rounded-xl px-4 py-2 text-xs font-bold transition cursor-pointer border ${
+              hasClinicalData
+                ? 'border-emerald-300 bg-emerald-50 text-medical hover:bg-emerald-100'
+                : 'border-medical bg-medical text-white hover:bg-medical/90 shadow-sm'
+            }`}
+          >
+            {hasClinicalData ? '✏️ แก้ไขข้อมูลผู้ป่วย' : '➕ กรอกข้อมูลผู้ป่วย / ผลแล็บ'}
+          </button>
+        </div>
 
         {/* Upload Dropzone Box */}
         <div
